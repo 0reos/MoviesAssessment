@@ -298,6 +298,35 @@ namespace MoviesAssessment
             }
         }
 
+        public string ReturnMovie(string CustID, string MovieID, string Title, string FirstName, string LastName)
+        {
+            //Runs if text is in the textboxes
+            if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)) && 
+                (!object.ReferenceEquals(Title, string.Empty) && (!object.ReferenceEquals(FirstName, string.Empty)) && 
+                (!object.ReferenceEquals(LastName, string.Empty))))
+            {
+                var myCommand = new SqlCommand("INSERT INTO RentedMovies (DateReturned)" + "VALUES(@Today)", Connection);
+
+                DateTime Today = DateTime.Now;
+
+                //Parameters to prevent SQL injections
+                //myCommand.Parameters.AddWithValue("MovieID", MovieID);
+                //myCommand.Parameters.AddWithValue("CustID", CustID);
+                myCommand.Parameters.AddWithValue("Today", Today);
+
+                //Opens a connection to add in SQL
+                Connection.Open();
+                myCommand.ExecuteNonQuery();
+                Connection.Close();
+
+                return "successfully issued";
+            }
+            else
+            {
+                Connection.Close();
+                return "Failed to issue";
+            }
+        }
 
 
 

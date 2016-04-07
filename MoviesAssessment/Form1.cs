@@ -24,9 +24,9 @@ namespace MoviesAssessment
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        /// <summary>
-        /// ==========_Movie_Related_===========
-        /// </summary>
+        
+        //====================_Movie_Related_========================
+        
         
         private void DisplayDataGridViewMovies()
         {
@@ -64,7 +64,6 @@ namespace MoviesAssessment
                     DGVMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     txtMovieID.Text = MovieID.ToString();
                 }
-
             }
             catch (Exception ex)
             {
@@ -181,9 +180,9 @@ namespace MoviesAssessment
             }
         }
 
-        /// <summary>
-        /// =========_Customer_Related_=========== 
-        /// </summary>
+       
+        //====================_Customer_Related_======================== 
+       
 
         private void DisplayDataGridViewCustomers()
         {
@@ -205,7 +204,7 @@ namespace MoviesAssessment
         private void DGVCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int CustID = 0;
-            //These are the cells clicks for the values that you click on
+            //Cell clicks for the values that you click on
             try
             {
                      CustID = (int) DGVCustomers.Rows[e.RowIndex].Cells[0].Value;
@@ -330,11 +329,33 @@ namespace MoviesAssessment
               }
         }
 
-       
-        /// <summary>
-        /// ========_Rented Movies_Related========
-        /// </summary>
 
+        //=====================_Rented Movies_Related==================
+        
+
+        private void DGVRentedMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            try
+            {
+                //These are the cells clicks for the values that you click on
+              txtFirstName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[0].Value.ToString();  
+               txtLastName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
+               txtPhoneNum.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[2].Value.ToString();
+                  txtTitle.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[3].Value.ToString();
+                 txtCustID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[7].Value.ToString();
+                txtMovieID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[8].Value.ToString();
+           
+              if (e.RowIndex >= 0)
+                {
+                    DGVRentedMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         private
             void DisplayDataGridViewRentedMovies()
@@ -387,13 +408,39 @@ namespace MoviesAssessment
 
         private void btnReturnMovie_Click(object sender, EventArgs e)
         {
+           string result = null;
 
+
+            if ((txtCustID.Text != string.Empty) && (txtMovieID.Text != string.Empty) && (txtTitle.Text != string.Empty) &&
+                (txtFirstName.Text != string.Empty) && (txtLastName.Text !=string.Empty))
+            {
+                try
+                {
+                    result = myDatabase.ReturnMovie(txtMovieID.Text, txtCustID.Text, txtTitle.Text, txtFirstName.Text, txtLastName.Text);
+                    MessageBox.Show("Movie successfully returned");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                //Updates DataGrideView to see new entries
+                DisplayDataGridViewRentedMovies();
+                txtCustID.Text = "";
+                txtMovieID.Text = "";
+                txtTitle.Text = "";
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Data required in Customer and Movie ID textboxes");
+            }
 
 
 
 
         }
-
         
     }
 }
