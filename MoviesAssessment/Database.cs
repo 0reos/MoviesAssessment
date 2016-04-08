@@ -23,6 +23,7 @@ namespace MoviesAssessment
            ConnectToDB(); 
         }
 
+        
 
         private void ConnectToDB()
         {
@@ -246,8 +247,7 @@ namespace MoviesAssessment
         }
 
 
-
-
+        
         //=======================_Rented_Movies_Related_==========================
         
 
@@ -298,20 +298,20 @@ namespace MoviesAssessment
             }
         }
 
-        public string ReturnMovie(string CustID, string MovieID, string Title, string FirstName, string LastName)
+        public string ReturnMovie(string CustID, string MovieID) //, string Title, string FirstName, string LastName)
         {
             //Runs if text is in the textboxes
-            if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)) && 
-                (!object.ReferenceEquals(Title, string.Empty) && (!object.ReferenceEquals(FirstName, string.Empty)) && 
-                (!object.ReferenceEquals(LastName, string.Empty))))
+            if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty))) // && 
+                //(!object.ReferenceEquals(Title, string.Empty) && (!object.ReferenceEquals(FirstName, string.Empty)) && 
+                //(!object.ReferenceEquals(LastName, string.Empty))))
             {
-                var myCommand = new SqlCommand("INSERT INTO RentedMovies (DateReturned)" + "VALUES(@Today)", Connection);
+                var myCommand = new SqlCommand("INSERT INTO RentedMovies (MovieIDFK, CustIDFK, DateReturned)" + "VALUES(@MovieID, @CustID, @Today)", Connection);
 
                 DateTime Today = DateTime.Now;
 
                 //Parameters to prevent SQL injections
-                //myCommand.Parameters.AddWithValue("MovieID", MovieID);
-                //myCommand.Parameters.AddWithValue("CustID", CustID);
+                myCommand.Parameters.AddWithValue("MovieID", MovieID);
+                myCommand.Parameters.AddWithValue("CustID", CustID);
                 myCommand.Parameters.AddWithValue("Today", Today);
 
                 //Opens a connection to add in SQL

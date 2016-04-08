@@ -24,6 +24,20 @@ namespace MoviesAssessment
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtCustID.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtAddress.Text = "";
+            txtPhoneNum.Text = "";
+            txtMovieID.Text = "";
+            txtRating.Text = "";
+            txtTitle.Text = "";
+            txtYear.Text = "";
+            txtPlot.Text = "";
+            txtGenre.Text = "";
+        }
         
         //====================_Movie_Related_========================
         
@@ -239,7 +253,7 @@ namespace MoviesAssessment
                 try
                 {
                     result = myDatabase.InsertOrUpdateCustomer(txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtPhoneNum.Text, txtCustID.Text, "Add");
-                    MessageBox.Show(txtFirstName.Text + " " + txtLastName.Text + " added " + result);
+                    MessageBox.Show(txtFirstName.Text + " " + txtLastName.Text + " added" + result);
                 }
                 catch (Exception ex)
                 {
@@ -416,7 +430,7 @@ namespace MoviesAssessment
             {
                 try
                 {
-                    result = myDatabase.ReturnMovie(txtMovieID.Text, txtCustID.Text, txtTitle.Text, txtFirstName.Text, txtLastName.Text);
+                    result = myDatabase.ReturnMovie(txtMovieID.Text, txtCustID.Text);
                     MessageBox.Show("Movie successfully returned");
                 }
                 catch (Exception ex)
@@ -434,13 +448,10 @@ namespace MoviesAssessment
             }
             else
             {
-                MessageBox.Show("Data required in Customer and Movie ID textboxes");
+                MessageBox.Show("Details of customer and rented movie required");
             }
-
-
-
-
         }
-        
+
+       
     }
 }
