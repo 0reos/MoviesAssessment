@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPageMovies = new System.Windows.Forms.TabPage();
             this.DGVMovies = new System.Windows.Forms.DataGridView();
@@ -490,6 +491,7 @@
             this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.TabControl);
             this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.TabControl.ResumeLayout(false);
