@@ -262,7 +262,7 @@
             // txtRating
             // 
             this.txtRating.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRating.Location = new System.Drawing.Point(167, 469);
+            this.txtRating.Location = new System.Drawing.Point(417, 469);
             this.txtRating.Name = "txtRating";
             this.txtRating.Size = new System.Drawing.Size(60, 21);
             this.txtRating.TabIndex = 5;
@@ -270,7 +270,7 @@
             // txtTitle
             // 
             this.txtTitle.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(233, 469);
+            this.txtTitle.Location = new System.Drawing.Point(167, 469);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(170, 21);
             this.txtTitle.TabIndex = 6;
@@ -278,7 +278,7 @@
             // txtYear
             // 
             this.txtYear.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtYear.Location = new System.Drawing.Point(409, 469);
+            this.txtYear.Location = new System.Drawing.Point(343, 469);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(68, 21);
             this.txtYear.TabIndex = 7;
@@ -286,7 +286,7 @@
             // txtPlot
             // 
             this.txtPlot.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlot.Location = new System.Drawing.Point(483, 469);
+            this.txtPlot.Location = new System.Drawing.Point(589, 469);
             this.txtPlot.Name = "txtPlot";
             this.txtPlot.Size = new System.Drawing.Size(162, 21);
             this.txtPlot.TabIndex = 8;
@@ -294,7 +294,7 @@
             // txtGenre
             // 
             this.txtGenre.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGenre.Location = new System.Drawing.Point(649, 469);
+            this.txtGenre.Location = new System.Drawing.Point(483, 469);
             this.txtGenre.Name = "txtGenre";
             this.txtGenre.Size = new System.Drawing.Size(100, 21);
             this.txtGenre.TabIndex = 9;
@@ -303,7 +303,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(167, 453);
+            this.label1.Location = new System.Drawing.Point(417, 453);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 18;
@@ -313,7 +313,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(233, 453);
+            this.label2.Location = new System.Drawing.Point(167, 453);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 19;
@@ -323,7 +323,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(409, 453);
+            this.label3.Location = new System.Drawing.Point(343, 453);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 20;
@@ -333,7 +333,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(483, 453);
+            this.label4.Location = new System.Drawing.Point(589, 453);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 21;
@@ -343,7 +343,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(649, 453);
+            this.label5.Location = new System.Drawing.Point(483, 453);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 22;

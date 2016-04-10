@@ -67,9 +67,9 @@ namespace MoviesAssessment
             try
             {
                 MovieID = (int) DGVMovies.Rows[e.RowIndex].Cells[0].Value;
-               txtRating.Text = DGVMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtTitle.Text = DGVMovies.Rows[e.RowIndex].Cells[2].Value.ToString();
-                 txtYear.Text = DGVMovies.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtTitle.Text = DGVMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
+                 txtYear.Text = DGVMovies.Rows[e.RowIndex].Cells[2].Value.ToString();
+               txtRating.Text = DGVMovies.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtGenre.Text = DGVMovies.Rows[e.RowIndex].Cells[4].Value.ToString();
                  txtPlot.Text = DGVMovies.Rows[e.RowIndex].Cells[5].Value.ToString();
 
@@ -92,12 +92,12 @@ namespace MoviesAssessment
             string result = null;
 
             //Only runs if there is something in the textboxes
-            if ((txtRating.Text != string.Empty) && (txtTitle.Text != string.Empty) && (txtYear.Text != string.Empty) && (txtPlot.Text != string.Empty) && 
-                (txtGenre.Text != string.Empty))
+            if ((txtTitle.Text != string.Empty) && (txtYear.Text != string.Empty) && (txtRating.Text != string.Empty) && (txtGenre.Text != string.Empty) && 
+                (txtPlot.Text != string.Empty))
             {
                 try
                 {
-                    result = myDatabase.InsertOrUpdateMovie(txtRating.Text, txtTitle.Text, txtYear.Text, txtPlot.Text, txtGenre.Text, txtMovieID.Text, "Add");
+                    result = myDatabase.InsertOrUpdateMovie(txtTitle.Text, txtYear.Text, txtRating.Text, txtGenre.Text, txtPlot.Text, txtMovieID.Text, "Add");
                     MessageBox.Show(txtTitle.Text + " " + txtYear.Text + " added " + result);
                 }
                 catch (Exception ex)
@@ -107,11 +107,11 @@ namespace MoviesAssessment
 
                 //Updates the DataGridView to see new entries
                 DisplayDataGridViewMovies();
-                txtRating.Text = "";
                 txtTitle.Text = "";
                 txtYear.Text = "";
-                txtPlot.Text = "";
+                txtRating.Text = "";
                 txtGenre.Text = "";
+                txtPlot.Text = "";
             }
             else 
             {
@@ -123,17 +123,17 @@ namespace MoviesAssessment
         {
             //Updates a Movie
             if ((!object.ReferenceEquals(txtMovieID.Text, string.Empty)) &&
-                (!object.ReferenceEquals(txtRating.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtTitle.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtYear.Text, string.Empty)) &&
-                (!object.ReferenceEquals(txtPlot.Text, string.Empty)) &&
-                (!object.ReferenceEquals(txtGenre.Text, string.Empty)))
+                (!object.ReferenceEquals(txtRating.Text, string.Empty)) &&
+                (!object.ReferenceEquals(txtGenre.Text, string.Empty)) &&
+                (!object.ReferenceEquals(txtPlot.Text, string.Empty)))
             {
                 string result = null;
                 try
                 {
-                    result = myDatabase.InsertOrUpdateMovie(txtRating.Text, txtTitle.Text,
-                        txtYear.Text, txtPlot.Text, txtGenre.Text, txtMovieID.Text, "Update");
+                    result = myDatabase.InsertOrUpdateMovie(txtTitle.Text, txtYear.Text,
+                        txtRating.Text, txtGenre.Text, txtPlot.Text, txtMovieID.Text, "Update");
                     MessageBox.Show(txtTitle.Text + " " + txtYear.Text + " updated" + result);
 
 
@@ -148,11 +148,11 @@ namespace MoviesAssessment
 
                 //Updates the DataGridView to see new entries
                 DisplayDataGridViewMovies();
-                txtRating.Text = "";
                 txtTitle.Text = "";
                 txtYear.Text = "";
-                txtPlot.Text = "";
+                txtRating.Text = "";
                 txtGenre.Text = "";
+                txtPlot.Text = "";
             }
         }
 
@@ -414,7 +414,7 @@ namespace MoviesAssessment
             }
             else
             {
-                MessageBox.Show("Data required in 'CustID' and 'MovieID' textboxes");
+                MessageBox.Show("Please select a movie and a customer and try again");
             }
 
 
@@ -431,7 +431,7 @@ namespace MoviesAssessment
                 try
                 {
                     result = myDatabase.ReturnMovie(txtMovieID.Text, txtCustID.Text);
-                    MessageBox.Show("Movie successfully returned");
+                    MessageBox.Show("Movie successfully");
                 }
                 catch (Exception ex)
                 {
@@ -448,7 +448,7 @@ namespace MoviesAssessment
             }
             else
             {
-                MessageBox.Show("Details of customer and rented movie required");
+                MessageBox.Show("Details of customer and rented movie is required");
             }
         }
 

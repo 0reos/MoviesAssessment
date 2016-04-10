@@ -52,7 +52,7 @@ namespace MoviesAssessment
             //Create a datatable --> Movies 
             DataTable dtMovies = new DataTable();
 
-            using (DataAD = new SqlDataAdapter("SELECT MovieID, Rating, Title, Year, Plot, Genre FROM Movies", Connection))
+            using (DataAD = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -67,7 +67,7 @@ namespace MoviesAssessment
 
         }
 
-        public string InsertOrUpdateMovie(string Rating, string Title, string Year, string Plot, string Genre, string ID,
+        public string InsertOrUpdateMovie(string Title, string Year, string Rating, string Genre, string Plot, string ID,
             string AddOrUpdate)
         {
             try
@@ -75,14 +75,15 @@ namespace MoviesAssessment
                 if (AddOrUpdate == "Add")
                 {
                     //Creates a Command object, a Query and opens a connection to SQL Server
-                    var myCommand = new SqlCommand("INSERT INTO Movies (Rating, Title, Year, Plot, Genre)" + "VALUES(@Rating, @Title, @Year, @Plot, @Genre)", Connection);
+                    var myCommand = new SqlCommand("INSERT INTO Movies (Title, Year, Rating, Genre, Plot)" + "VALUES(@Title, @Year, @Rating, @Genre, @Plot, )", Connection);
 
                     //Parameters preventing SQL injections
-                    myCommand.Parameters.AddWithValue("Rating", Rating);
                     myCommand.Parameters.AddWithValue("Title", Title);
                     myCommand.Parameters.AddWithValue("Year", Title);
-                    myCommand.Parameters.AddWithValue("Plot", Plot);
+                    myCommand.Parameters.AddWithValue("Rating", Rating);
                     myCommand.Parameters.AddWithValue("Genre", Genre);
+                    myCommand.Parameters.AddWithValue("Plot", Plot);
+                   
 
                     //Opens connection to add in SQL and closes
                     Connection.Open();
@@ -91,14 +92,14 @@ namespace MoviesAssessment
                 }
                 else if (AddOrUpdate == "Update")
                 {
-                    var myCommand = new SqlCommand("UPDATE Movies set Rating = @Rating, Title = @Title, Year = @Year, Plot = @Plot, Genre = @Genre WHERE MovieID = @ID ", Connection);
+                    var myCommand = new SqlCommand("UPDATE Movies set Title = @Title, Year = @Year, Rating = @Rating, Genre = @Genre, Plot = @Plot  WHERE MovieID = @ID ", Connection);
 
                     //Parameters preventing SQL injections
-                    myCommand.Parameters.AddWithValue("Rating", Rating);
                     myCommand.Parameters.AddWithValue("Title", Title);
                     myCommand.Parameters.AddWithValue("Year", Year);
-                    myCommand.Parameters.AddWithValue("Plot", Plot);
+                    myCommand.Parameters.AddWithValue("Rating", Rating);
                     myCommand.Parameters.AddWithValue("Genre", Genre);
+                    myCommand.Parameters.AddWithValue("Plot", Plot);
                     myCommand.Parameters.AddWithValue("ID", ID);
 
                     //Opens connection to add in SQL and closes
