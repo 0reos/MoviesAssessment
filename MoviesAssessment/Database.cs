@@ -270,19 +270,50 @@ namespace MoviesAssessment
             return dtRentedMovies;
         }
 
+        public string DeleteRMRecord(string ID, string Table)
+        {
+            //Only runs if there is something in the textbox
+            if (!object.ReferenceEquals(ID, string.Empty))
+            {
+                var myCommand = new SqlCommand();
+                switch (Table)
+                {
+                    case "RentedMovies":
+                        myCommand = new SqlCommand("DELETE FROM RentedMovies WHERE RMID = @ID");
+                        break;
+                }
+
+                //Parameters to prevent SQL injections
+                myCommand.Connection = Connection;
+                myCommand.Parameters.AddWithValue("ID", ID);
+
+                //Opens a connection to add in SQL
+                Connection.Open();
+                myCommand.ExecuteNonQuery();
+                Connection.Close();
+
+                return "successfully deleted";
+            }
+            else
+            {
+                Connection.Close();
+                return "Failed to be deleted";
+            }
+        }
+        
+
         public string IssueMovie(string CustID, string MovieID)
         {
-            
             //Runs if text is in the textboxes
             if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
             {
-                var myCommand = new SqlCommand("INSERT INTO RentedMovies (MovieIDFK, CustIDFK, DateRented)" + "VALUES(@MovieID, @CustID, @Today)", Connection);
+                var myCommand = new SqlCommand("INSERT INTO RentedMovies (CustIDFK, MovieIDFK, DateRented)" + "VALUES(@CustID, @MovieID, @Today)", Connection);
 
                 DateTime Today = DateTime.Now;
 
                 //Parameters to prevent SQL injections
-                myCommand.Parameters.AddWithValue("MovieID", MovieID);
                 myCommand.Parameters.AddWithValue("CustID", CustID);
+                myCommand.Parameters.AddWithValue("MovieID", MovieID);
                 myCommand.Parameters.AddWithValue("Today", Today);
                 
                 //Opens a connection to add in SQL
@@ -299,37 +330,38 @@ namespace MoviesAssessment
             }
         }
 
-        public string ReturnMovie(string CustID, string MovieID) //, string Title, string FirstName, string LastName)
+        public string ReturnMovie(string CustID, string MovieID, string ID) 
         {
+            DateTime Today = DateTime.Now;
+
             //Runs if text is in the textboxes
-            if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty))) // && 
-                //(!object.ReferenceEquals(Title, string.Empty) && (!object.ReferenceEquals(FirstName, string.Empty)) && 
-                //(!object.ReferenceEquals(LastName, string.Empty))))
-            {
-                var myCommand = new SqlCommand("INSERT INTO RentedMovies (MovieIDFK, CustIDFK, DateReturned)" + "VALUES(@MovieID, @CustID, @Today)", Connection);
+            if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
+                {
+                   var myCommand = new SqlCommand("UPDATE RentedMovies set MovieIDFK = @MovieID, CustIDFK = @CustID, DateReturned = @Today WHERE RMID = @ID ", Connection);
 
-                DateTime Today = DateTime.Now;
+                    // var myCommand = new SqlCommand("UPDATE Customer set FirstName = @Firstname, LastName = @Lastname, Address = @address, Phone = @phone WHERE CustID = @ID ", Connection);
 
-                //Parameters to prevent SQL injections
-                myCommand.Parameters.AddWithValue("MovieID", MovieID);
-                myCommand.Parameters.AddWithValue("CustID", CustID);
-                myCommand.Parameters.AddWithValue("Today", Today);
+                   //Parameters to prevent SQL injections
+                   myCommand.Parameters.AddWithValue("MovieID", MovieID);
+                   myCommand.Parameters.AddWithValue("CustID", CustID);
+                   myCommand.Parameters.AddWithValue("Today", Today);
+                   myCommand.Parameters.AddWithValue("ID", ID);
 
-                //Opens a connection to add in SQL
-                Connection.Open();
-                myCommand.ExecuteNonQuery();
-                Connection.Close();
+                   //Opens a connection to add in SQL
+                   Connection.Open();
+                   myCommand.ExecuteNonQuery();
+                   Connection.Close();
 
-                return "successfully issued";
-            }
-            else
-            {
-                Connection.Close();
-                return "Failed to issue";
-            }
+                   return "successfully returned";
+                }
+             else
+                {
+                  Connection.Close();
+                  return "Failed to return";
+                }
         }
 
-
+       
 
 
     }

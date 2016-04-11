@@ -148,11 +148,8 @@ namespace MoviesAssessment
 
                 //Updates the DataGridView to see new entries
                 DisplayDataGridViewMovies();
-                txtTitle.Text = "";
-                txtYear.Text = "";
-                txtRating.Text = "";
-                txtGenre.Text = "";
-                txtPlot.Text = "";
+                
+                myDatabase.ClearAllTextBoxes(this);
             }
         }
 
@@ -262,10 +259,8 @@ namespace MoviesAssessment
 
                 //Updates the DataGridView to see new entries
                 DisplayDataGridViewCustomers();
-                txtFirstName.Text = "";
-                txtLastName.Text = "";
-                txtAddress.Text = "";
-                txtPhoneNum.Text = "";
+                
+                myDatabase.ClearAllTextBoxes(this);
             }
             else
             {
@@ -352,13 +347,14 @@ namespace MoviesAssessment
             
             try
             {
-                //These are the cells clicks for the values that you click on
+              //These are the cells clicks for the values that you click on
               txtFirstName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[0].Value.ToString();  
                txtLastName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
                txtPhoneNum.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[2].Value.ToString();
                   txtTitle.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[3].Value.ToString();
                  txtCustID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[7].Value.ToString();
                 txtMovieID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[8].Value.ToString();
+          txtRentedMovieID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[6].Value.ToString();
            
               if (e.RowIndex >= 0)
                 {
@@ -399,7 +395,7 @@ namespace MoviesAssessment
             {
                 try
                 {
-                    result = myDatabase.IssueMovie(txtMovieID.Text, txtCustID.Text);
+                    result = myDatabase.IssueMovie(txtCustID.Text, txtMovieID.Text);
                     MessageBox.Show("Movie successfully issued to customer");
                 }
                 catch (Exception ex)
@@ -417,6 +413,7 @@ namespace MoviesAssessment
                 MessageBox.Show("Please select a movie and a customer and try again");
             }
 
+            myDatabase.ClearAllTextBoxes(this);
 
         }
 
@@ -430,21 +427,18 @@ namespace MoviesAssessment
             {
                 try
                 {
-                    result = myDatabase.ReturnMovie(txtMovieID.Text, txtCustID.Text);
-                    MessageBox.Show("Movie successfully");
+                    result = myDatabase.ReturnMovie(txtMovieID.Text, txtCustID.Text, txtRentedMovieID.Text);
+                    MessageBox.Show("Movie successfully returned");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Failed to return movie, " + ex.Message);
                 }
 
                 //Updates DataGrideView to see new entries
                 DisplayDataGridViewRentedMovies();
-                txtCustID.Text = "";
-                txtMovieID.Text = "";
-                txtTitle.Text = "";
-                txtFirstName.Text = "";
-                txtLastName.Text = "";
+                
+                myDatabase.ClearAllTextBoxes(this);
             }
             else
             {
@@ -452,6 +446,40 @@ namespace MoviesAssessment
             }
         }
 
-       
+        private void btnDeleteRMRecord_Click(object sender, EventArgs e)
+        {
+            //Hold the ID of the Customer
+            string InputID = string.Empty;
+            string result = null;
+            string TableName = string.Empty;
+
+            Button fakebutton = (Button)sender;
+
+            try
+            {
+                switch (fakebutton.Name)
+                {
+                    case "btnDeleteRMRecord":
+                        InputID = txtRentedMovieID.Text;
+                        TableName = "RentedMovies";
+                        break;
+                }
+
+                //Delete the customer here and return back the result
+                result = myDatabase.DeleteRMRecord(InputID, TableName);
+                MessageBox.Show(TableName + " " + result);
+
+                //Refreshes everything
+                DisplayDataGridViewRentedMovies();
+
+
+                //Clears all textboxes after
+                myDatabase.ClearAllTextBoxes(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select a customer to be removed, " + ex.Message);
+            }
+        }
     }
 }

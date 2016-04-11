@@ -67,6 +67,9 @@
             this.btnIssueMovie = new System.Windows.Forms.Button();
             this.btnReturnMovie = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.txtRentedMovieID = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnDeleteRMRecord = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
             this.tabPageMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).BeginInit();
@@ -453,11 +456,41 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // txtRentedMovieID
+            // 
+            this.txtRentedMovieID.Location = new System.Drawing.Point(780, 118);
+            this.txtRentedMovieID.Name = "txtRentedMovieID";
+            this.txtRentedMovieID.Size = new System.Drawing.Size(44, 21);
+            this.txtRentedMovieID.TabIndex = 32;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(777, 102);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(81, 13);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "RentedMovieID";
+            // 
+            // btnDeleteRMRecord
+            // 
+            this.btnDeleteRMRecord.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnDeleteRMRecord.Location = new System.Drawing.Point(780, 146);
+            this.btnDeleteRMRecord.Name = "btnDeleteRMRecord";
+            this.btnDeleteRMRecord.Size = new System.Drawing.Size(157, 23);
+            this.btnDeleteRMRecord.TabIndex = 34;
+            this.btnDeleteRMRecord.Text = "Delete Rented Movie Record";
+            this.btnDeleteRMRecord.UseVisualStyleBackColor = false;
+            this.btnDeleteRMRecord.Click += new System.EventHandler(this.btnDeleteRMRecord_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 571);
+            this.Controls.Add(this.btnDeleteRMRecord);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtRentedMovieID);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnReturnMovie);
             this.Controls.Add(this.btnIssueMovie);
@@ -546,6 +579,9 @@
         private System.Windows.Forms.Button btnIssueMovie;
         private System.Windows.Forms.Button btnReturnMovie;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox txtRentedMovieID;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnDeleteRMRecord;
     }
 }
 
