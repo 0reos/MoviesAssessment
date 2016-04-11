@@ -112,7 +112,7 @@ namespace MoviesAssessment
         private void btnUpdateMovie_Click(object sender, EventArgs e)
         {
             
-            if ((!object.ReferenceEquals(txtMovieID.Text, string.Empty)) &&
+            if ((!object.ReferenceEquals(lblMovieID.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtTitle.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtYear.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtRating.Text, string.Empty)) &&
