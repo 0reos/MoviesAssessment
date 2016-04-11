@@ -26,17 +26,7 @@ namespace MoviesAssessment
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtCustID.Text = "";
-            txtFirstName.Text = "";
-            txtLastName.Text = "";
-            txtAddress.Text = "";
-            txtPhoneNum.Text = "";
-            txtMovieID.Text = "";
-            txtRating.Text = "";
-            txtTitle.Text = "";
-            txtYear.Text = "";
-            txtPlot.Text = "";
-            txtGenre.Text = "";
+            myDatabase.ClearAllTextBoxes(this);
         }
         
         //====================_Movie_Related_========================
@@ -76,7 +66,7 @@ namespace MoviesAssessment
                 if (e.RowIndex >= 0)
                 {
                     DGVMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    txtMovieID.Text = MovieID.ToString();
+                    lblMovieID.Text = MovieID.ToString();
                 }
             }
             catch (Exception ex)
@@ -97,7 +87,7 @@ namespace MoviesAssessment
             {
                 try
                 {
-                    result = myDatabase.InsertOrUpdateMovie(txtTitle.Text, txtYear.Text, txtRating.Text, txtGenre.Text, txtPlot.Text, txtMovieID.Text, "Add");
+                    result = myDatabase.InsertOrUpdateMovie(txtTitle.Text, txtYear.Text, txtRating.Text, txtGenre.Text, txtPlot.Text, lblMovieID.Text, "Add");
                     MessageBox.Show(txtTitle.Text + " " + txtYear.Text + " added " + result);
                 }
                 catch (Exception ex)
@@ -121,7 +111,7 @@ namespace MoviesAssessment
 
         private void btnUpdateMovie_Click(object sender, EventArgs e)
         {
-            //Updates a Movie
+            
             if ((!object.ReferenceEquals(txtMovieID.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtTitle.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtYear.Text, string.Empty)) &&
@@ -133,7 +123,7 @@ namespace MoviesAssessment
                 try
                 {
                     result = myDatabase.InsertOrUpdateMovie(txtTitle.Text, txtYear.Text,
-                        txtRating.Text, txtGenre.Text, txtPlot.Text, txtMovieID.Text, "Update");
+                        txtRating.Text, txtGenre.Text, txtPlot.Text, lblMovieID.Text, "Update");
                     MessageBox.Show(txtTitle.Text + " " + txtYear.Text + " updated" + result);
 
 
@@ -153,8 +143,7 @@ namespace MoviesAssessment
             }
         }
 
-
-        //Deletes movie
+        
         private void btnDeleteMovie_Click(System.Object sender, System.EventArgs e)
         {
             //Hold the ID of the Movie
@@ -162,36 +151,43 @@ namespace MoviesAssessment
             string result = null;
             string TableName = string.Empty;
 
-            Button fakebutton = (Button)sender;
+            Button fakebutton = (Button) sender;
 
-            try
+
+            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this Movie?", "Confirmation",
+                MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
             {
-                switch (fakebutton.Name)
+
+                try
                 {
-                    case "btnDeleteMovie":
-                        InputID = txtMovieID.Text;
-                        TableName = "Movie";
-                        break;
+                    switch (fakebutton.Name)
+                    {
+                        case "btnDeleteMovie":
+                            InputID = lblMovieID.Text;
+                            TableName = "Movie";
+                            break;
+                    }
+
+                    //Delete the movie here and return back the result
+                    result = myDatabase.DeleteMovie(InputID, TableName);
+                    MessageBox.Show(TableName + " deleted " + result);
+
+                    //Refreshes everything
+                    DisplayDataGridViewMovies();
+
+
+                    //Clears all textboxes after
+                    myDatabase.ClearAllTextBoxes(this);
                 }
-
-                //Delete the movie here and return back the result
-                result = myDatabase.DeleteMovie(InputID, TableName);
-                MessageBox.Show(TableName + " deleted " + result);
-
-                //Refreshes everything
-                DisplayDataGridViewMovies();
-
-
-                //Clears all textboxes after
-                myDatabase.ClearAllTextBoxes(this);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please select a movie to be removed. " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Please select a movie to be removed. " + ex.Message);
+                }
             }
         }
 
-       
+
         //====================_Customer_Related_======================== 
        
 
@@ -204,7 +200,7 @@ namespace MoviesAssessment
                 //Passes the datatable to the DataGridView
                 DGVCustomers.DataSource = myDatabase.FillDGVCustomersWithCustomers();
 
-                DGVCustomers.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                DGVCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
             catch (Exception ex)
             {
@@ -227,7 +223,7 @@ namespace MoviesAssessment
                 if (e.RowIndex >= 0)
                 {
                     DGVCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    txtCustID.Text = CustID.ToString();
+                    lblCustID.Text = CustID.ToString();
                 }
                   
             }
@@ -237,8 +233,7 @@ namespace MoviesAssessment
             }
         }
 
-
-        //Add a New Customer
+        
         private void btnAddCustomer_Click(System.Object sender, System.EventArgs e)
         {
             //Holds the success or failure result
@@ -249,7 +244,7 @@ namespace MoviesAssessment
             {
                 try
                 {
-                    result = myDatabase.InsertOrUpdateCustomer(txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtPhoneNum.Text, txtCustID.Text, "Add");
+                    result = myDatabase.InsertOrUpdateCustomer(txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtPhoneNum.Text, lblCustID.Text, "Add");
                     MessageBox.Show(txtFirstName.Text + " " + txtLastName.Text + " added" + result);
                 }
                 catch (Exception ex)
@@ -270,8 +265,8 @@ namespace MoviesAssessment
 
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
-            //Updates a customer
-            if ((!object.ReferenceEquals(txtCustID.Text, string.Empty)) &&
+            
+            if ((!object.ReferenceEquals(lblCustID.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtFirstName.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtLastName.Text, string.Empty)) &&
                 (!object.ReferenceEquals(txtAddress.Text, string.Empty)) &&
@@ -281,7 +276,7 @@ namespace MoviesAssessment
                 try
                 {
                     result = myDatabase.InsertOrUpdateCustomer(txtFirstName.Text, txtLastName.Text,
-                        txtAddress.Text, txtPhoneNum.Text, txtCustID.Text, "Update");
+                        txtAddress.Text, txtPhoneNum.Text, lblCustID.Text, "Update");
                     MessageBox.Show(txtFirstName.Text + " " + txtLastName.Text + " updated " + result);
 
 
@@ -310,56 +305,66 @@ namespace MoviesAssessment
             string TableName = string.Empty;
 
             Button fakebutton =(Button) sender;
+            
 
-            try
+            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this customer?", "Confirmation",
+                MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
             {
-                switch (fakebutton.Name)
+                try
                 {
-                    case "btnDeleteCustomer":
-                        InputID = txtCustID.Text;
-                        TableName = "Customer";
-                        break;
+                    switch (fakebutton.Name)
+                    {
+                        case "btnDeleteCustomer":
+                            InputID = lblCustID.Text;
+                            TableName = "Customer";
+                            break;
+                    }
+
+                    //Delete the customer here and return back the result
+                    result = myDatabase.DeleteCustomer(InputID, TableName);
+                    MessageBox.Show(TableName + " " + result);
+
+                    //Refreshes everything
+                    DisplayDataGridViewCustomers();
+
+
+                    //Clears all textboxes after
+                    myDatabase.ClearAllTextBoxes(this);
                 }
+                catch (Exception ex)
 
-                //Delete the customer here and return back the result
-                result = myDatabase.DeleteCustomer(InputID, TableName);
-                MessageBox.Show(TableName + " " + result);
-
-                //Refreshes everything
-                DisplayDataGridViewCustomers();
-                
-                
-                //Clears all textboxes after
-                myDatabase.ClearAllTextBoxes(this);
-            }
-              catch (Exception ex)
-              {
+                {
                   MessageBox.Show("Please select a customer to be removed, " + ex.Message);
-              }
-        }
+                }
+                
+            }
+            
+            
+        } 
 
-
+        
         //=====================_Rented Movies_Related==================
         
 
         private void DGVRentedMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+                  
             try
             {
-              //These are the cells clicks for the values that you click on
-              txtFirstName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[0].Value.ToString();  
-               txtLastName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
-               txtPhoneNum.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[2].Value.ToString();
-                  txtTitle.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[3].Value.ToString();
-                 txtCustID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[7].Value.ToString();
-                txtMovieID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[8].Value.ToString();
-          txtRentedMovieID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[6].Value.ToString();
+                  //These are the cells clicks for the values that you click on
+                  txtFirstName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[0].Value.ToString();  
+                   txtLastName.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
+                   txtPhoneNum.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[2].Value.ToString();
+                      txtTitle.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[3].Value.ToString();
+                     lblCustID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    lblMovieID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[8].Value.ToString();
+              lblRentedMovieID.Text = DGVRentedMovies.Rows[e.RowIndex].Cells[6].Value.ToString();
            
-              if (e.RowIndex >= 0)
-                {
-                    DGVRentedMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                }
+                  if (e.RowIndex >= 0)
+                    {
+                        DGVRentedMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                    }
             }
             catch (Exception ex)
             {
@@ -391,11 +396,11 @@ namespace MoviesAssessment
             string result = null;
             
 
-            if ((txtCustID.Text != string.Empty) && (txtMovieID.Text != string.Empty))
+            if ((lblCustID.Text != string.Empty) && (lblMovieID.Text != string.Empty))
             {
                 try
                 {
-                    result = myDatabase.IssueMovie(txtCustID.Text, txtMovieID.Text);
+                    result = myDatabase.IssueMovie(lblCustID.Text, lblMovieID.Text);
                     MessageBox.Show("Movie successfully issued to customer");
                 }
                 catch (Exception ex)
@@ -405,8 +410,8 @@ namespace MoviesAssessment
 
                 //Updates DataGrideView to see new entries
                 DisplayDataGridViewRentedMovies();
-                txtCustID.Text = "";
-                txtMovieID.Text = "";
+                lblCustID.Text = "";
+                lblMovieID.Text = "";
             }
             else
             {
@@ -414,7 +419,7 @@ namespace MoviesAssessment
             }
 
             myDatabase.ClearAllTextBoxes(this);
-
+            
         }
 
         private void btnReturnMovie_Click(object sender, EventArgs e)
@@ -422,12 +427,12 @@ namespace MoviesAssessment
            string result = null;
 
 
-            if ((txtCustID.Text != string.Empty) && (txtMovieID.Text != string.Empty) && (txtTitle.Text != string.Empty) &&
+            if ((lblCustID.Text != string.Empty) && (lblMovieID.Text != string.Empty) && (txtTitle.Text != string.Empty) &&
                 (txtFirstName.Text != string.Empty) && (txtLastName.Text !=string.Empty))
             {
                 try
                 {
-                    result = myDatabase.ReturnMovie(txtMovieID.Text, txtCustID.Text, txtRentedMovieID.Text);
+                    result = myDatabase.ReturnMovie(lblMovieID.Text, lblCustID.Text, lblRentedMovieID.Text);
                     MessageBox.Show("Movie successfully returned");
                 }
                 catch (Exception ex)
@@ -442,13 +447,13 @@ namespace MoviesAssessment
             }
             else
             {
-                MessageBox.Show("Details of customer and rented movie is required");
+                MessageBox.Show("ID's of customer and movie are required");
             }
         }
 
         private void btnDeleteRMRecord_Click(object sender, EventArgs e)
         {
-            //Hold the ID of the Customer
+            //Holds the ID of the Rented Movie
             string InputID = string.Empty;
             string result = null;
             string TableName = string.Empty;
@@ -460,12 +465,12 @@ namespace MoviesAssessment
                 switch (fakebutton.Name)
                 {
                     case "btnDeleteRMRecord":
-                        InputID = txtRentedMovieID.Text;
+                        InputID = lblRentedMovieID.Text;
                         TableName = "RentedMovies";
                         break;
                 }
 
-                //Delete the customer here and return back the result
+                //Delete the reord here and returns back the result
                 result = myDatabase.DeleteRMRecord(InputID, TableName);
                 MessageBox.Show(TableName + " " + result);
 
@@ -478,7 +483,7 @@ namespace MoviesAssessment
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please select a customer to be removed, " + ex.Message);
+                MessageBox.Show("Please select record to be removed, " + ex.Message);
             }
         }
     }

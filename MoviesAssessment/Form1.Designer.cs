@@ -41,12 +41,10 @@
             this.btnUpdateMovie = new System.Windows.Forms.Button();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnDeleteCustomer = new System.Windows.Forms.Button();
-            this.txtCustID = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtPhoneNum = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtMovieID = new System.Windows.Forms.TextBox();
             this.txtRating = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtYear = new System.Windows.Forms.TextBox();
@@ -67,9 +65,12 @@
             this.btnIssueMovie = new System.Windows.Forms.Button();
             this.btnReturnMovie = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.txtRentedMovieID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnDeleteRMRecord = new System.Windows.Forms.Button();
+            this.lblCustID = new System.Windows.Forms.Label();
+            this.lblMovieID = new System.Windows.Forms.Label();
+            this.lblRentedMovieID = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.TabControl.SuspendLayout();
             this.tabPageMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).BeginInit();
@@ -213,15 +214,6 @@
             this.btnDeleteCustomer.UseVisualStyleBackColor = false;
             this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
             // 
-            // txtCustID
-            // 
-            this.txtCustID.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustID.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCustID.Location = new System.Drawing.Point(118, 361);
-            this.txtCustID.Name = "txtCustID";
-            this.txtCustID.Size = new System.Drawing.Size(43, 21);
-            this.txtCustID.TabIndex = 16;
-            // 
             // txtFirstName
             // 
             this.txtFirstName.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -253,14 +245,6 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(115, 21);
             this.txtLastName.TabIndex = 2;
-            // 
-            // txtMovieID
-            // 
-            this.txtMovieID.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMovieID.Location = new System.Drawing.Point(119, 469);
-            this.txtMovieID.Name = "txtMovieID";
-            this.txtMovieID.Size = new System.Drawing.Size(42, 21);
-            this.txtMovieID.TabIndex = 17;
             // 
             // txtRating
             // 
@@ -424,7 +408,7 @@
             // btnIssueMovie
             // 
             this.btnIssueMovie.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIssueMovie.ForeColor = System.Drawing.Color.Green;
+            this.btnIssueMovie.ForeColor = System.Drawing.Color.MediumVioletRed;
             this.btnIssueMovie.Location = new System.Drawing.Point(780, 34);
             this.btnIssueMovie.Name = "btnIssueMovie";
             this.btnIssueMovie.Size = new System.Drawing.Size(103, 60);
@@ -436,7 +420,7 @@
             // btnReturnMovie
             // 
             this.btnReturnMovie.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturnMovie.ForeColor = System.Drawing.Color.MediumVioletRed;
+            this.btnReturnMovie.ForeColor = System.Drawing.Color.Green;
             this.btnReturnMovie.Location = new System.Drawing.Point(903, 34);
             this.btnReturnMovie.Name = "btnReturnMovie";
             this.btnReturnMovie.Size = new System.Drawing.Size(103, 60);
@@ -447,7 +431,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnClear.BackColor = System.Drawing.Color.IndianRed;
             this.btnClear.Location = new System.Drawing.Point(16, 437);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(93, 23);
@@ -455,13 +439,6 @@
             this.btnClear.Text = "Clear All";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // txtRentedMovieID
-            // 
-            this.txtRentedMovieID.Location = new System.Drawing.Point(780, 118);
-            this.txtRentedMovieID.Name = "txtRentedMovieID";
-            this.txtRentedMovieID.Size = new System.Drawing.Size(44, 21);
-            this.txtRentedMovieID.TabIndex = 32;
             // 
             // label12
             // 
@@ -474,7 +451,7 @@
             // 
             // btnDeleteRMRecord
             // 
-            this.btnDeleteRMRecord.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnDeleteRMRecord.BackColor = System.Drawing.Color.IndianRed;
             this.btnDeleteRMRecord.Location = new System.Drawing.Point(780, 146);
             this.btnDeleteRMRecord.Name = "btnDeleteRMRecord";
             this.btnDeleteRMRecord.Size = new System.Drawing.Size(157, 23);
@@ -483,14 +460,55 @@
             this.btnDeleteRMRecord.UseVisualStyleBackColor = false;
             this.btnDeleteRMRecord.Click += new System.EventHandler(this.btnDeleteRMRecord_Click);
             // 
+            // lblCustID
+            // 
+            this.lblCustID.AutoSize = true;
+            this.lblCustID.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lblCustID.Location = new System.Drawing.Point(119, 366);
+            this.lblCustID.Name = "lblCustID";
+            this.lblCustID.Size = new System.Drawing.Size(37, 13);
+            this.lblCustID.TabIndex = 35;
+            this.lblCustID.Text = "CustID";
+            // 
+            // lblMovieID
+            // 
+            this.lblMovieID.AutoSize = true;
+            this.lblMovieID.BackColor = System.Drawing.Color.Tan;
+            this.lblMovieID.Location = new System.Drawing.Point(118, 474);
+            this.lblMovieID.Name = "lblMovieID";
+            this.lblMovieID.Size = new System.Drawing.Size(47, 13);
+            this.lblMovieID.TabIndex = 36;
+            this.lblMovieID.Text = "MovieID";
+            // 
+            // lblRentedMovieID
+            // 
+            this.lblRentedMovieID.AutoSize = true;
+            this.lblRentedMovieID.BackColor = System.Drawing.Color.RosyBrown;
+            this.lblRentedMovieID.Location = new System.Drawing.Point(780, 125);
+            this.lblRentedMovieID.Name = "lblRentedMovieID";
+            this.lblRentedMovieID.Size = new System.Drawing.Size(81, 13);
+            this.lblRentedMovieID.TabIndex = 37;
+            this.lblRentedMovieID.Text = "RentedMovieID";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(780, 243);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 38;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 571);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lblRentedMovieID);
+            this.Controls.Add(this.lblMovieID);
+            this.Controls.Add(this.lblCustID);
             this.Controls.Add(this.btnDeleteRMRecord);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtRentedMovieID);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnReturnMovie);
             this.Controls.Add(this.btnIssueMovie);
@@ -511,12 +529,10 @@
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtRating);
-            this.Controls.Add(this.txtMovieID);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtPhoneNum);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.txtCustID);
             this.Controls.Add(this.btnDeleteCustomer);
             this.Controls.Add(this.btnUpdateCustomer);
             this.Controls.Add(this.btnUpdateMovie);
@@ -553,12 +569,10 @@
         private System.Windows.Forms.Button btnUpdateMovie;
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnDeleteCustomer;
-        private System.Windows.Forms.TextBox txtCustID;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtPhoneNum;
         private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.TextBox txtMovieID;
         private System.Windows.Forms.TextBox txtRating;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TextBox txtYear;
@@ -579,9 +593,12 @@
         private System.Windows.Forms.Button btnIssueMovie;
         private System.Windows.Forms.Button btnReturnMovie;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox txtRentedMovieID;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnDeleteRMRecord;
+        private System.Windows.Forms.Label lblCustID;
+        private System.Windows.Forms.Label lblMovieID;
+        private System.Windows.Forms.Label lblRentedMovieID;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
