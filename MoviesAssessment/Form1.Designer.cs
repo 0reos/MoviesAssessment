@@ -70,7 +70,9 @@
             this.lblCustID = new System.Windows.Forms.Label();
             this.lblMovieID = new System.Windows.Forms.Label();
             this.lblRentedMovieID = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CBOptions = new System.Windows.Forms.ComboBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.DGVResults = new System.Windows.Forms.DataGridView();
             this.TabControl.SuspendLayout();
             this.tabPageMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).BeginInit();
@@ -78,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).BeginInit();
             this.tabPageRentedMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRentedMovies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVResults)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -466,9 +469,8 @@
             this.lblCustID.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblCustID.Location = new System.Drawing.Point(119, 366);
             this.lblCustID.Name = "lblCustID";
-            this.lblCustID.Size = new System.Drawing.Size(37, 13);
+            this.lblCustID.Size = new System.Drawing.Size(0, 13);
             this.lblCustID.TabIndex = 35;
-            this.lblCustID.Text = "CustID";
             // 
             // lblMovieID
             // 
@@ -476,9 +478,8 @@
             this.lblMovieID.BackColor = System.Drawing.Color.Tan;
             this.lblMovieID.Location = new System.Drawing.Point(118, 474);
             this.lblMovieID.Name = "lblMovieID";
-            this.lblMovieID.Size = new System.Drawing.Size(47, 13);
+            this.lblMovieID.Size = new System.Drawing.Size(0, 13);
             this.lblMovieID.TabIndex = 36;
-            this.lblMovieID.Text = "MovieID";
             // 
             // lblRentedMovieID
             // 
@@ -486,24 +487,43 @@
             this.lblRentedMovieID.BackColor = System.Drawing.Color.RosyBrown;
             this.lblRentedMovieID.Location = new System.Drawing.Point(780, 125);
             this.lblRentedMovieID.Name = "lblRentedMovieID";
-            this.lblRentedMovieID.Size = new System.Drawing.Size(81, 13);
+            this.lblRentedMovieID.Size = new System.Drawing.Size(0, 13);
             this.lblRentedMovieID.TabIndex = 37;
-            this.lblRentedMovieID.Text = "RentedMovieID";
             // 
-            // comboBox1
+            // CBOptions
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(780, 243);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 38;
+            this.CBOptions.FormattingEnabled = true;
+            this.CBOptions.Location = new System.Drawing.Point(780, 243);
+            this.CBOptions.Name = "CBOptions";
+            this.CBOptions.Size = new System.Drawing.Size(172, 21);
+            this.CBOptions.TabIndex = 38;
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(780, 271);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(67, 23);
+            this.btnFind.TabIndex = 39;
+            this.btnFind.Text = "Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // DGVResults
+            // 
+            this.DGVResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVResults.Location = new System.Drawing.Point(780, 300);
+            this.DGVResults.Name = "DGVResults";
+            this.DGVResults.Size = new System.Drawing.Size(240, 150);
+            this.DGVResults.TabIndex = 40;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 571);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.DGVResults);
+            this.Controls.Add(this.btnFind);
+            this.Controls.Add(this.CBOptions);
             this.Controls.Add(this.lblRentedMovieID);
             this.Controls.Add(this.lblMovieID);
             this.Controls.Add(this.lblCustID);
@@ -550,6 +570,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).EndInit();
             this.tabPageRentedMovies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVRentedMovies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,7 +619,9 @@
         private System.Windows.Forms.Label lblCustID;
         private System.Windows.Forms.Label lblMovieID;
         private System.Windows.Forms.Label lblRentedMovieID;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CBOptions;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.DataGridView DGVResults;
     }
 }
 

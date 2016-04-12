@@ -14,7 +14,7 @@ namespace MoviesAssessment
     public partial class Form1 : Form
     {
         Database myDatabase = new Database();
-       // SqlConnection Connection = new SqlConnection();
+       
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +22,8 @@ namespace MoviesAssessment
             DisplayDataGridViewCustomers();
             DisplayDataGridViewRentedMovies();
             StartPosition = FormStartPosition.CenterScreen;
+            CBOptions.Items.Add("Most popular movies");
+            CBOptions.Items.Add("Most movies rented (by Customer)");
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -29,6 +31,7 @@ namespace MoviesAssessment
             myDatabase.ClearAllTextBoxes(this);
         }
         
+
         //====================_Movie_Related_========================
         
         
@@ -127,7 +130,7 @@ namespace MoviesAssessment
                     MessageBox.Show(txtTitle.Text + " " + txtYear.Text + " updated" + result);
 
 
-                    //Update the DataGridView to see new entries 
+                    //Updates the DataGridView to see new entries 
                     DisplayDataGridViewMovies();
                     DGVMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 }
@@ -146,7 +149,7 @@ namespace MoviesAssessment
         
         private void btnDeleteMovie_Click(System.Object sender, System.EventArgs e)
         {
-            //Hold the ID of the Movie
+            //Holds the ID of the Movie
             string InputID = string.Empty;
             string result = null;
             string TableName = string.Empty;
@@ -372,8 +375,8 @@ namespace MoviesAssessment
             }
         }
 
-        private
-            void DisplayDataGridViewRentedMovies()
+
+        private void DisplayDataGridViewRentedMovies()
         {
             //Clears out old data
             DGVRentedMovies.DataSource = null;
@@ -486,5 +489,58 @@ namespace MoviesAssessment
                 MessageBox.Show("Please select record to be removed, " + ex.Message);
             }
         }
+
+
+        //================================================================================
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            if (CBOptions.SelectedIndex == 0)
+            {
+               DisplayDataGViewMCMovieRented();
+            }
+
+
+            if (CBOptions.SelectedIndex == 1)
+            {
+                DisplayMCVideosRentedByCustomer();
+            }
+        }
+
+
+        private void DisplayDataGViewMCMovieRented()
+        {
+            //Clears out old data
+            DGVResults.DataSource = null;
+            try
+            {
+                //Passes the datatable to the DataGridView
+                DGVResults.DataSource = myDatabase.FillDataGViewMCMovieRented();
+
+                DGVResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DisplayMCVideosRentedByCustomer()
+        {
+            DGVResults.DataSource = null;
+            try
+            {
+                DGVResults.DataSource = myDatabase.FillMCVideosRentedByCustomer();
+
+                DGVResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
     }
+
 }

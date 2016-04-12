@@ -17,12 +17,11 @@ namespace MoviesAssessment
         SqlConnection Connection = new SqlConnection();
         SqlCommand Command = new SqlCommand();
         SqlDataAdapter DataAD = new SqlDataAdapter();
-
+        
         public Database()
         {
            ConnectToDB(); 
         }
-
         
 
         private void ConnectToDB()
@@ -45,6 +44,43 @@ namespace MoviesAssessment
             }
         }
 
+        public DataTable FillDataGViewMCMovieRented()
+        {
+            DataTable MCMovieRented = new DataTable();
+            using (DataAD = new SqlDataAdapter("SELECT Title, Year FROM MostCommonMovieRented ORDER BY [Times Issued] DESC", Connection)) //MovieIDFK
+
+            {
+                    //Open a connection to the DB
+                    Connection.Open();
+                    //Fill the datatable from the SQL
+                    DataAD.Fill(MCMovieRented);
+                    //Close the connection
+                    Connection.Close();
+                }
+                //Passes the datatable to the DataGridView
+                return MCMovieRented;
+        }
+
+        
+        public DataTable FillMCVideosRentedByCustomer()
+        {
+            DataTable MCVidRentedbyCust = new DataTable();
+
+            using (DataAD = new SqlDataAdapter("SELECT FirstName, LastName, CustIDFK FROM MostVideosRentedByCustomer ORDER BY [Hired Movies] DESC", Connection))
+            {
+                //Open a connection to the DB
+                Connection.Open();
+                //Fill the datatable from the SQL
+                DataAD.Fill(MCVidRentedbyCust);
+                //Close the connection
+                Connection.Close();
+            }
+            //Passes the datatable to the DataGridView
+            return MCVidRentedbyCust;
+
+        }
+
+        
         //=======================_Movies_Related_==========================
 
         public DataTable FillDGVMoviesWithMovies()
@@ -149,7 +185,9 @@ namespace MoviesAssessment
             }
         }
         
+
         //=======================_Customer_Related_==========================
+
 
         public DataTable FillDGVCustomersWithCustomers()
         {
