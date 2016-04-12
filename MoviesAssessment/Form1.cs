@@ -50,8 +50,9 @@ namespace MoviesAssessment
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
+
+
         private void DGVMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int MovieID;
@@ -75,9 +76,9 @@ namespace MoviesAssessment
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
         }
+
 
         private void btnAddMovie_Click(System.Object sender, System.EventArgs e)
         {
@@ -340,10 +341,7 @@ namespace MoviesAssessment
                 {
                   MessageBox.Show("Please select a customer to be removed, " + ex.Message);
                 }
-                
             }
-            
-            
         } 
 
         
@@ -352,7 +350,7 @@ namespace MoviesAssessment
 
         private void DGVRentedMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-                  
+             
             try
             {
                   //These are the cells clicks for the values that you click on
@@ -420,10 +418,9 @@ namespace MoviesAssessment
             {
                 MessageBox.Show("Please select a movie and a customer and try again");
             }
-
             myDatabase.ClearAllTextBoxes(this);
-            
         }
+
 
         private void btnReturnMovie_Click(object sender, EventArgs e)
         {
@@ -453,6 +450,7 @@ namespace MoviesAssessment
                 MessageBox.Show("ID's of customer and movie are required");
             }
         }
+
 
         private void btnDeleteRMRecord_Click(object sender, EventArgs e)
         {
@@ -493,6 +491,7 @@ namespace MoviesAssessment
 
         //================================================================================
 
+
         private void btnFind_Click(object sender, EventArgs e)
         {
             if (CBOptions.SelectedIndex == 0)
@@ -525,6 +524,7 @@ namespace MoviesAssessment
             }
         }
 
+
         private void DisplayMCVideosRentedByCustomer()
         {
             DGVResults.DataSource = null;
@@ -539,8 +539,6 @@ namespace MoviesAssessment
                 MessageBox.Show(ex.Message);
             }
         }
-
-
     }
 
 }

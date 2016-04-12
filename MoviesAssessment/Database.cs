@@ -47,18 +47,18 @@ namespace MoviesAssessment
         public DataTable FillDataGViewMCMovieRented()
         {
             DataTable MCMovieRented = new DataTable();
-            using (DataAD = new SqlDataAdapter("SELECT Title, Year FROM MostCommonMovieRented ORDER BY [Times Issued] DESC", Connection)) //MovieIDFK
+            using (DataAD = new SqlDataAdapter("SELECT [Times Issued], Title, Year FROM MostCommonMovieRented ORDER BY [Times Issued] DESC", Connection)) 
 
             {
-                    //Open a connection to the DB
-                    Connection.Open();
-                    //Fill the datatable from the SQL
-                    DataAD.Fill(MCMovieRented);
-                    //Close the connection
-                    Connection.Close();
-                }
-                //Passes the datatable to the DataGridView
-                return MCMovieRented;
+               //Open a connection to the DB
+               Connection.Open();
+               //Fill the datatable from the SQL
+               DataAD.Fill(MCMovieRented);
+               //Close the connection
+               Connection.Close();
+            }
+            //Passes the datatable to the DataGridView
+            return MCMovieRented;
         }
 
         
@@ -66,7 +66,7 @@ namespace MoviesAssessment
         {
             DataTable MCVidRentedbyCust = new DataTable();
 
-            using (DataAD = new SqlDataAdapter("SELECT FirstName, LastName, CustIDFK FROM MostVideosRentedByCustomer ORDER BY [Hired Movies] DESC", Connection))
+            using (DataAD = new SqlDataAdapter("SELECT [Hired Movies], FirstName, LastName, [Hired Movies] FROM MostMoviesRentedByCustomer ORDER BY [Hired Movies] DESC", Connection))//CustIDFK
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -77,7 +77,6 @@ namespace MoviesAssessment
             }
             //Passes the datatable to the DataGridView
             return MCVidRentedbyCust;
-
         }
 
         
@@ -100,7 +99,6 @@ namespace MoviesAssessment
 
             //Passes the datatable to the DataGridView
             return dtMovies;
-
         }
 
         public string InsertOrUpdateMovie(string Title, string Year, string Rating, string Genre, string Plot, string ID,
@@ -254,6 +252,7 @@ namespace MoviesAssessment
             }
         }
 
+
         public string DeleteCustomer(string ID, string Table)
         {
             //Only runs if there is something in the textbox
@@ -307,6 +306,7 @@ namespace MoviesAssessment
             //Passes the datatable to the DataGridView
             return dtRentedMovies;
         }
+
 
         public string DeleteRMRecord(string ID, string Table)
         {
@@ -368,6 +368,7 @@ namespace MoviesAssessment
             }
         }
 
+
         public string ReturnMovie(string CustID, string MovieID, string ID) 
         {
             DateTime Today = DateTime.Now;
@@ -398,10 +399,6 @@ namespace MoviesAssessment
                   return "Failed to return";
                 }
         }
-
-       
-
-
     }
 
 
