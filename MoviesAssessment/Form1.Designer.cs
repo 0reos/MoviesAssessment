@@ -449,7 +449,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(774, 301);
+            this.label12.Location = new System.Drawing.Point(775, 280);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 13);
             this.label12.TabIndex = 33;
@@ -458,7 +458,7 @@
             // btnDeleteRMRecord
             // 
             this.btnDeleteRMRecord.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDeleteRMRecord.Location = new System.Drawing.Point(776, 334);
+            this.btnDeleteRMRecord.Location = new System.Drawing.Point(777, 313);
             this.btnDeleteRMRecord.Name = "btnDeleteRMRecord";
             this.btnDeleteRMRecord.Size = new System.Drawing.Size(157, 23);
             this.btnDeleteRMRecord.TabIndex = 34;
@@ -488,7 +488,7 @@
             // 
             this.lblRentedMovieID.AutoSize = true;
             this.lblRentedMovieID.BackColor = System.Drawing.Color.RosyBrown;
-            this.lblRentedMovieID.Location = new System.Drawing.Point(776, 318);
+            this.lblRentedMovieID.Location = new System.Drawing.Point(777, 297);
             this.lblRentedMovieID.Name = "lblRentedMovieID";
             this.lblRentedMovieID.Size = new System.Drawing.Size(0, 13);
             this.lblRentedMovieID.TabIndex = 37;
