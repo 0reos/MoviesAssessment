@@ -108,6 +108,7 @@ namespace MoviesAssessment
                 txtRating.Text = "";
                 txtGenre.Text = "";
                 txtPlot.Text = "";
+                lblMovieID.Text = "";
             }
             else 
             {
@@ -146,6 +147,7 @@ namespace MoviesAssessment
                 DisplayDataGridViewMovies();
                 
                 myDatabase.ClearAllTextBoxes(this);
+                lblMovieID.Text = "";
             }
         }
 
@@ -160,7 +162,7 @@ namespace MoviesAssessment
             Button fakebutton = (Button) sender;
 
 
-            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this Movie?", "Confirmation",
+            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this Movie?", "Confirm Deletion",
                 MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -185,6 +187,7 @@ namespace MoviesAssessment
 
                     //Clears all textboxes after
                     myDatabase.ClearAllTextBoxes(this);
+                    lblMovieID.Text = "";
                 }
                 catch (Exception ex)
                 {
@@ -301,6 +304,7 @@ namespace MoviesAssessment
                 txtLastName.Text = "";
                 txtAddress.Text = "";
                 txtPhoneNum.Text = "";
+                lblCustID.Text = "";
             }
         }
         private void btnDeleteCustomer_Click(System.Object sender, System.EventArgs e)
@@ -313,7 +317,7 @@ namespace MoviesAssessment
             Button fakebutton =(Button) sender;
             
 
-            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this customer?", "Confirmation",
+            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this customer?", "Confirm Deletion",
                 MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -337,6 +341,7 @@ namespace MoviesAssessment
 
                     //Clears all textboxes after
                     myDatabase.ClearAllTextBoxes(this);
+                    lblCustID.Text = "";
                 }
                 catch (Exception ex)
 
@@ -413,14 +418,13 @@ namespace MoviesAssessment
 
                 //Updates DataGrideView to see new entries
                 DisplayDataGridViewRentedMovies();
-                lblCustID.Text = "";
-                lblMovieID.Text = "";
             }
             else
             {
-                MessageBox.Show("Please select a movie and a customer and try again");
+                MessageBox.Show("Please select a movie and a customer then try again");
             }
             myDatabase.ClearAllTextBoxes(this);
+            myDatabase.ClearAllLables(this);
         }
 
 
@@ -446,6 +450,7 @@ namespace MoviesAssessment
                 DisplayDataGridViewRentedMovies();
                 
                 myDatabase.ClearAllTextBoxes(this);
+                myDatabase.ClearAllLables(this);
             }
             else
             {
@@ -462,7 +467,7 @@ namespace MoviesAssessment
             string TableName = string.Empty;
 
             Button fakebutton = (Button) sender;
-            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this rented movie record?", "Confirmation",
+            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this rented movie record?", "Confirm Deletion",
                 MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -486,6 +491,7 @@ namespace MoviesAssessment
 
                     //Clears all textboxes after
                     myDatabase.ClearAllTextBoxes(this);
+                    myDatabase.ClearAllLables(this);
                 }
                 catch (Exception ex)
                 {
@@ -506,7 +512,6 @@ namespace MoviesAssessment
             {
                DisplayDataGViewMCMovieRented();
             }
-
 
             if (CBOptions.SelectedIndex == 1)
             {

@@ -33,6 +33,7 @@ namespace MoviesAssessment
             Command.Connection = Connection;
         }
 
+
         public void ClearAllTextBoxes(Control root)
         {
             foreach (Control ctrl in root.Controls)
@@ -43,6 +44,29 @@ namespace MoviesAssessment
                 }
             }
         }
+
+
+        public void ClearAllLables(Control root)
+        {
+            List<string>LabelNamesAreCleared = new List<string>();
+
+            LabelNamesAreCleared.Add("lblMovieID");
+            LabelNamesAreCleared.Add("lblCustID");
+            LabelNamesAreCleared.Add("lblRentedMovieID");
+            LabelNamesAreCleared.Add("lblTotalCost");
+
+            foreach (Control ctrl in root.Controls)
+            {
+                if (ctrl is Label)
+                {
+                    if (LabelNamesAreCleared.Contains(ctrl.Name.ToString()))
+                    {
+                       ctrl.Text = string.Empty;
+                    }
+                }
+            }
+        }
+        
 
         public DataTable FillDataGViewMCMovieRented()
         {
