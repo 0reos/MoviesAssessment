@@ -415,7 +415,7 @@
             // 
             this.btnIssueMovie.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIssueMovie.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.btnIssueMovie.Location = new System.Drawing.Point(780, 34);
+            this.btnIssueMovie.Location = new System.Drawing.Point(790, 480);
             this.btnIssueMovie.Name = "btnIssueMovie";
             this.btnIssueMovie.Size = new System.Drawing.Size(103, 60);
             this.btnIssueMovie.TabIndex = 29;
@@ -427,7 +427,7 @@
             // 
             this.btnReturnMovie.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturnMovie.ForeColor = System.Drawing.Color.Green;
-            this.btnReturnMovie.Location = new System.Drawing.Point(903, 34);
+            this.btnReturnMovie.Location = new System.Drawing.Point(899, 480);
             this.btnReturnMovie.Name = "btnReturnMovie";
             this.btnReturnMovie.Size = new System.Drawing.Size(103, 60);
             this.btnReturnMovie.TabIndex = 30;
@@ -449,7 +449,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(777, 102);
+            this.label12.Location = new System.Drawing.Point(774, 301);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 13);
             this.label12.TabIndex = 33;
@@ -458,7 +458,7 @@
             // btnDeleteRMRecord
             // 
             this.btnDeleteRMRecord.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDeleteRMRecord.Location = new System.Drawing.Point(780, 146);
+            this.btnDeleteRMRecord.Location = new System.Drawing.Point(776, 334);
             this.btnDeleteRMRecord.Name = "btnDeleteRMRecord";
             this.btnDeleteRMRecord.Size = new System.Drawing.Size(157, 23);
             this.btnDeleteRMRecord.TabIndex = 34;
@@ -488,7 +488,7 @@
             // 
             this.lblRentedMovieID.AutoSize = true;
             this.lblRentedMovieID.BackColor = System.Drawing.Color.RosyBrown;
-            this.lblRentedMovieID.Location = new System.Drawing.Point(780, 125);
+            this.lblRentedMovieID.Location = new System.Drawing.Point(776, 318);
             this.lblRentedMovieID.Name = "lblRentedMovieID";
             this.lblRentedMovieID.Size = new System.Drawing.Size(0, 13);
             this.lblRentedMovieID.TabIndex = 37;
@@ -496,14 +496,14 @@
             // CBOptions
             // 
             this.CBOptions.FormattingEnabled = true;
-            this.CBOptions.Location = new System.Drawing.Point(780, 280);
+            this.CBOptions.Location = new System.Drawing.Point(776, 190);
             this.CBOptions.Name = "CBOptions";
             this.CBOptions.Size = new System.Drawing.Size(158, 21);
             this.CBOptions.TabIndex = 38;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(780, 308);
+            this.btnFind.Location = new System.Drawing.Point(776, 217);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(53, 23);
             this.btnFind.TabIndex = 39;
@@ -519,7 +519,7 @@
             this.DGVResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGVResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVResults.ColumnHeadersVisible = false;
-            this.DGVResults.Location = new System.Drawing.Point(780, 337);
+            this.DGVResults.Location = new System.Drawing.Point(776, 34);
             this.DGVResults.Name = "DGVResults";
             this.DGVResults.RowHeadersVisible = false;
             this.DGVResults.Size = new System.Drawing.Size(226, 150);
@@ -547,7 +547,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 571);
+            this.ClientSize = new System.Drawing.Size(1022, 559);
             this.Controls.Add(this.lblTotalCost);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.DGVResults);
@@ -592,6 +592,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Movies";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.TabControl.ResumeLayout(false);
             this.tabPageMovies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).EndInit();
