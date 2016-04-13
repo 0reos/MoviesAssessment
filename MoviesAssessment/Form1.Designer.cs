@@ -592,7 +592,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Movies";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.TabControl.ResumeLayout(false);
             this.tabPageMovies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).EndInit();
