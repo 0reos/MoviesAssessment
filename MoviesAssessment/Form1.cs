@@ -71,12 +71,14 @@ namespace MoviesAssessment
                 {
                     DGVMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     lblMovieID.Text = MovieID.ToString();
+                  lblTotalCost.Text = myDatabase.Cost(txtYear.Text);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            
         }
 
 
@@ -459,40 +461,46 @@ namespace MoviesAssessment
             string result = null;
             string TableName = string.Empty;
 
-            Button fakebutton = (Button)sender;
-
-            try
+            Button fakebutton = (Button) sender;
+            DialogResult dialog = MessageBox.Show("Are you sure you want to DELETE this rented movie record?", "Confirmation",
+                MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
             {
-                switch (fakebutton.Name)
+                try
                 {
-                    case "btnDeleteRMRecord":
-                        InputID = lblRentedMovieID.Text;
-                        TableName = "RentedMovies";
-                        break;
+                    switch (fakebutton.Name)
+                    {
+                        case "btnDeleteRMRecord":
+                            InputID = lblRentedMovieID.Text;
+                            TableName = "Rented Movie Record";
+                            break;
+                    }
+
+                    //Delete the reord here and returns back the result
+                    result = myDatabase.DeleteRMRecord(InputID, TableName);
+                    MessageBox.Show(TableName + " " + result);
+
+                    //Refreshes everything
+                    DisplayDataGridViewRentedMovies();
+
+
+                    //Clears all textboxes after
+                    myDatabase.ClearAllTextBoxes(this);
                 }
-
-                //Delete the reord here and returns back the result
-                result = myDatabase.DeleteRMRecord(InputID, TableName);
-                MessageBox.Show(TableName + " " + result);
-
-                //Refreshes everything
-                DisplayDataGridViewRentedMovies();
-
-
-                //Clears all textboxes after
-                myDatabase.ClearAllTextBoxes(this);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please select record to be removed, " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Please select record to be removed, " + ex.Message);
+                }
             }
         }
+
 
 
         //================================================================================
 
 
-        private void btnFind_Click(object sender, EventArgs e)
+            private
+            void btnFind_Click(object sender, EventArgs e)
         {
             if (CBOptions.SelectedIndex == 0)
             {
@@ -539,6 +547,8 @@ namespace MoviesAssessment
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
     }
 
 }

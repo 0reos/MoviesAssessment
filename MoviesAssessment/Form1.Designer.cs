@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPageMovies = new System.Windows.Forms.TabPage();
@@ -73,6 +74,8 @@
             this.CBOptions = new System.Windows.Forms.ComboBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.DGVResults = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblTotalCost = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.tabPageMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).BeginInit();
@@ -110,7 +113,7 @@
             this.DGVMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVMovies.Location = new System.Drawing.Point(0, 0);
             this.DGVMovies.Name = "DGVMovies";
-            this.DGVMovies.Size = new System.Drawing.Size(729, 306);
+            this.DGVMovies.Size = new System.Drawing.Size(729, 302);
             this.DGVMovies.TabIndex = 0;
             this.DGVMovies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVMovies_CellContentClick);
             // 
@@ -493,16 +496,16 @@
             // CBOptions
             // 
             this.CBOptions.FormattingEnabled = true;
-            this.CBOptions.Location = new System.Drawing.Point(780, 243);
+            this.CBOptions.Location = new System.Drawing.Point(780, 280);
             this.CBOptions.Name = "CBOptions";
-            this.CBOptions.Size = new System.Drawing.Size(172, 21);
+            this.CBOptions.Size = new System.Drawing.Size(158, 21);
             this.CBOptions.TabIndex = 38;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(780, 271);
+            this.btnFind.Location = new System.Drawing.Point(780, 308);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(67, 23);
+            this.btnFind.Size = new System.Drawing.Size(53, 23);
             this.btnFind.TabIndex = 39;
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
@@ -510,17 +513,43 @@
             // 
             // DGVResults
             // 
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DGVResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVResults.Location = new System.Drawing.Point(780, 300);
+            this.DGVResults.ColumnHeadersVisible = false;
+            this.DGVResults.Location = new System.Drawing.Point(780, 337);
             this.DGVResults.Name = "DGVResults";
-            this.DGVResults.Size = new System.Drawing.Size(240, 150);
+            this.DGVResults.RowHeadersVisible = false;
+            this.DGVResults.Size = new System.Drawing.Size(226, 150);
             this.DGVResults.TabIndex = 40;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(165, 497);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(34, 13);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "Cost =";
+            // 
+            // lblTotalCost
+            // 
+            this.lblTotalCost.AutoSize = true;
+            this.lblTotalCost.Location = new System.Drawing.Point(198, 497);
+            this.lblTotalCost.Name = "lblTotalCost";
+            this.lblTotalCost.Size = new System.Drawing.Size(34, 13);
+            this.lblTotalCost.TabIndex = 42;
+            this.lblTotalCost.Text = "result";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 571);
+            this.Controls.Add(this.lblTotalCost);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.DGVResults);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.CBOptions);
@@ -562,7 +591,7 @@
             this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Movies";
             this.TabControl.ResumeLayout(false);
             this.tabPageMovies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).EndInit();
@@ -622,6 +651,8 @@
         private System.Windows.Forms.ComboBox CBOptions;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.DataGridView DGVResults;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblTotalCost;
     }
 }
 

@@ -66,7 +66,7 @@ namespace MoviesAssessment
         {
             DataTable MCVidRentedbyCust = new DataTable();
 
-            using (DataAD = new SqlDataAdapter("SELECT [Hired Movies], FirstName, LastName, [Hired Movies] FROM MostMoviesRentedByCustomer ORDER BY [Hired Movies] DESC", Connection))//CustIDFK
+            using (DataAD = new SqlDataAdapter("SELECT [Hired Movies], FirstName, LastName FROM MostMoviesRentedByCustomer ORDER BY [Hired Movies] DESC", Connection))
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -316,7 +316,7 @@ namespace MoviesAssessment
                 var myCommand = new SqlCommand();
                 switch (Table)
                 {
-                    case "RentedMovies":
+                    case "Rented Movie Record":
                         myCommand = new SqlCommand("DELETE FROM RentedMovies WHERE RMID = @ID");
                         break;
                 }
@@ -399,6 +399,23 @@ namespace MoviesAssessment
                   return "Failed to return";
                 }
         }
+
+        public string Cost(string MovieYear)
+        {
+
+            int YearNow = (Convert.ToInt32(DateTime.Now.Year));
+            int YearsOld = (YearNow - (Convert.ToInt32(MovieYear)));
+
+            if (YearsOld <= 5)
+            {
+                return "$5.00";
+            }
+            else
+            {
+                return "$2.00";
+            }
+        }
+
     }
 
 
