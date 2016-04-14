@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MoviesAssessment
 {
-    class Database
+    public  class Database
     {
 
         //Create Connection, Command and an Adapter
@@ -24,7 +24,7 @@ namespace MoviesAssessment
         }
         
 
-        private void ConnectToDB()
+        public void ConnectToDB()
         {
             //Connection string to DB
             string connectionstring = @"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True";
@@ -426,7 +426,6 @@ namespace MoviesAssessment
 
         public string Cost(string MovieYear)
         {
-
             int YearNow = (Convert.ToInt32(DateTime.Now.Year));
             int YearsOld = (YearNow - (Convert.ToInt32(MovieYear)));
 
@@ -440,6 +439,35 @@ namespace MoviesAssessment
             }
         }
 
+        //================_Unit_Test_==================
+
+
+        public bool ConnectionTestFillDGVMovies()
+        {
+            //Create a datatable --> Movies 
+            DataTable dtMovies = new DataTable();
+
+            try
+            {
+                using (DataAD = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
+                {
+                    //Open a connection to the DB
+                    Connection.Open();
+                    //Fill the datatable from the SQL
+                    DataAD.Fill(dtMovies);
+                    //Close the connection
+                    Connection.Close();
+                }
+
+                //Passes the datatable to the DataGridView
+                return true;
+            }
+            catch (Exception)
+            {
+
+               return false;
+            }
+        }
     }
 
 
