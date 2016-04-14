@@ -10,24 +10,25 @@ using System.Windows.Forms;
 
 namespace MoviesAssessment
 {
-    public  class Database
+    public class Database
     {
 
         //Create Connection, Command and an Adapter
         SqlConnection Connection = new SqlConnection();
         SqlCommand Command = new SqlCommand();
         SqlDataAdapter DataAD = new SqlDataAdapter();
-        
+
         public Database()
         {
-           ConnectToDB(); 
+            ConnectToDB();
         }
-        
+
 
         public void ConnectToDB()
         {
             //Connection string to DB
-            string connectionstring = @"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True";
+            string connectionstring =
+                @"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True";
 
             Connection.ConnectionString = connectionstring;
             Command.Connection = Connection;
@@ -40,7 +41,7 @@ namespace MoviesAssessment
             {
                 if (ctrl is TextBox)
                 {
-                    ((TextBox)ctrl).Text = string.Empty;
+                    ((TextBox) ctrl).Text = string.Empty;
                 }
             }
         }
@@ -48,7 +49,7 @@ namespace MoviesAssessment
 
         public void ClearAllLables(Control root)
         {
-            List<string>LabelNamesAreCleared = new List<string>();
+            List<string> LabelNamesAreCleared = new List<string>();
 
             LabelNamesAreCleared.Add("lblMovieID");
             LabelNamesAreCleared.Add("lblCustID");
@@ -61,36 +62,44 @@ namespace MoviesAssessment
                 {
                     if (LabelNamesAreCleared.Contains(ctrl.Name.ToString()))
                     {
-                       ctrl.Text = string.Empty;
+                        ctrl.Text = string.Empty;
                     }
                 }
             }
         }
-        
+
 
         public DataTable FillDataGViewMCMovieRented()
         {
             DataTable MCMovieRented = new DataTable();
-            using (DataAD = new SqlDataAdapter("SELECT [Times Issued], Title, Year FROM MostCommonMovieRented ORDER BY [Times Issued] DESC", Connection)) 
+            using (
+                DataAD =
+                    new SqlDataAdapter(
+                        "SELECT [Times Issued], Title, Year FROM MostCommonMovieRented ORDER BY [Times Issued] DESC",
+                        Connection))
 
             {
-               //Open a connection to the DB
-               Connection.Open();
-               //Fill the datatable from the SQL
-               DataAD.Fill(MCMovieRented);
-               //Close the connection
-               Connection.Close();
+                //Open a connection to the DB
+                Connection.Open();
+                //Fill the datatable from the SQL
+                DataAD.Fill(MCMovieRented);
+                //Close the connection
+                Connection.Close();
             }
             //Passes the datatable to the DataGridView
             return MCMovieRented;
         }
 
-        
+
         public DataTable FillMCVideosRentedByCustomer()
         {
             DataTable MCVidRentedbyCust = new DataTable();
 
-            using (DataAD = new SqlDataAdapter("SELECT [Hired Movies], FirstName, LastName FROM MostMoviesRentedByCustomer ORDER BY [Hired Movies] DESC", Connection))
+            using (
+                DataAD =
+                    new SqlDataAdapter(
+                        "SELECT [Hired Movies], FirstName, LastName FROM MostMoviesRentedByCustomer ORDER BY [Hired Movies] DESC",
+                        Connection))
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -103,7 +112,7 @@ namespace MoviesAssessment
             return MCVidRentedbyCust;
         }
 
-        
+
         //=======================_Movies_Related_==========================
 
         public DataTable FillDGVMoviesWithMovies()
@@ -111,7 +120,8 @@ namespace MoviesAssessment
             //Create a datatable --> Movies 
             DataTable dtMovies = new DataTable();
 
-            using (DataAD = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
+            using (
+                DataAD = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -133,7 +143,10 @@ namespace MoviesAssessment
                 if (AddOrUpdate == "Add")
                 {
                     //Creates a Command object, a Query and opens a connection to SQL Server
-                    var myCommand = new SqlCommand("INSERT INTO Movies (Title, Year, Rating, Genre, Plot)" + "VALUES(@Title, @Year, @Rating, @Genre, @Plot, )", Connection);
+                    var myCommand =
+                        new SqlCommand(
+                            "INSERT INTO Movies (Title, Year, Rating, Genre, Plot)" +
+                            "VALUES(@Title, @Year, @Rating, @Genre, @Plot, )", Connection);
 
                     //Parameters preventing SQL injections
                     myCommand.Parameters.AddWithValue("Title", Title);
@@ -141,7 +154,7 @@ namespace MoviesAssessment
                     myCommand.Parameters.AddWithValue("Rating", Rating);
                     myCommand.Parameters.AddWithValue("Genre", Genre);
                     myCommand.Parameters.AddWithValue("Plot", Plot);
-                   
+
 
                     //Opens connection to add in SQL and closes
                     Connection.Open();
@@ -150,7 +163,10 @@ namespace MoviesAssessment
                 }
                 else if (AddOrUpdate == "Update")
                 {
-                    var myCommand = new SqlCommand("UPDATE Movies set Title = @Title, Year = @Year, Rating = @Rating, Genre = @Genre, Plot = @Plot  WHERE MovieID = @ID ", Connection);
+                    var myCommand =
+                        new SqlCommand(
+                            "UPDATE Movies set Title = @Title, Year = @Year, Rating = @Rating, Genre = @Genre, Plot = @Plot  WHERE MovieID = @ID ",
+                            Connection);
 
                     //Parameters preventing SQL injections
                     myCommand.Parameters.AddWithValue("Title", Title);
@@ -206,7 +222,7 @@ namespace MoviesAssessment
                 return "Failed";
             }
         }
-        
+
 
         //=======================_Customer_Related_==========================
 
@@ -216,7 +232,9 @@ namespace MoviesAssessment
             //Create a datatable --> Customers
             DataTable dtCustomers = new DataTable();
 
-            using (DataAD = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone From Customer", Connection))
+            using (
+                DataAD =
+                    new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone From Customer", Connection))
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -229,14 +247,18 @@ namespace MoviesAssessment
             return dtCustomers;
         }
 
-        public string InsertOrUpdateCustomer(string Firstname, string Lastname, string Address, string Phone, string ID, string AddOrUpdate)
+        public string InsertOrUpdateCustomer(string Firstname, string Lastname, string Address, string Phone, string ID,
+            string AddOrUpdate)
         {
             try
             {
                 if (AddOrUpdate == "Add")
                 {
-                   //Creates a Command object, a Query and opens a connection to SQL Server
-                    var myCommand = new SqlCommand("INSERT INTO Customer (FirstName, LastName, Address, Phone)" + "VALUES(@Firstname, @Lastname, @Address, @Phone)", Connection);
+                    //Creates a Command object, a Query and opens a connection to SQL Server
+                    var myCommand =
+                        new SqlCommand(
+                            "INSERT INTO Customer (FirstName, LastName, Address, Phone)" +
+                            "VALUES(@Firstname, @Lastname, @Address, @Phone)", Connection);
 
                     //Parameters preventing SQL injections
                     myCommand.Parameters.AddWithValue("Firstname", Firstname);
@@ -251,7 +273,10 @@ namespace MoviesAssessment
                 }
                 else if (AddOrUpdate == "Update")
                 {
-                    var myCommand = new SqlCommand("UPDATE Customer set FirstName = @Firstname, LastName = @Lastname, Address = @address, Phone = @phone WHERE CustID = @ID ", Connection);
+                    var myCommand =
+                        new SqlCommand(
+                            "UPDATE Customer set FirstName = @Firstname, LastName = @Lastname, Address = @address, Phone = @phone WHERE CustID = @ID ",
+                            Connection);
 
                     //Parameters preventing SQL injections
                     myCommand.Parameters.AddWithValue("Firstname", Firstname);
@@ -269,8 +294,8 @@ namespace MoviesAssessment
             }
             catch (Exception e)
             {
-               // Closes a second time as it jumps the first connection.close when ExecuteNonQuery fails
-               Connection.Close();
+                // Closes a second time as it jumps the first connection.close when ExecuteNonQuery fails
+                Connection.Close();
 
                 return " Has Failed with " + e;
             }
@@ -309,16 +334,20 @@ namespace MoviesAssessment
         }
 
 
-        
+
         //=======================_Rented_Movies_Related_==========================
-        
+
 
         public DataTable FillDGVRentedMoviesWithRentedMovies()
         {
             //Create a datatable --> RentedMovies
             DataTable dtRentedMovies = new DataTable();
 
-            using (DataAD = new SqlDataAdapter("SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum", Connection))
+            using (
+                DataAD =
+                    new SqlDataAdapter(
+                        "SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum",
+                        Connection))
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -362,14 +391,17 @@ namespace MoviesAssessment
                 return "Failed to be deleted";
             }
         }
-        
+
 
         public string IssueMovie(string CustID, string MovieID)
         {
             //Runs if text is in the textboxes
             if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
             {
-                var myCommand = new SqlCommand("INSERT INTO RentedMovies (CustIDFK, MovieIDFK, DateRented)" + "VALUES(@CustID, @MovieID, @Today)", Connection);
+                var myCommand =
+                    new SqlCommand(
+                        "INSERT INTO RentedMovies (CustIDFK, MovieIDFK, DateRented)" +
+                        "VALUES(@CustID, @MovieID, @Today)", Connection);
 
                 DateTime Today = DateTime.Now;
 
@@ -377,7 +409,7 @@ namespace MoviesAssessment
                 myCommand.Parameters.AddWithValue("CustID", CustID);
                 myCommand.Parameters.AddWithValue("MovieID", MovieID);
                 myCommand.Parameters.AddWithValue("Today", Today);
-                
+
                 //Opens a connection to add in SQL
                 Connection.Open();
                 myCommand.ExecuteNonQuery();
@@ -393,35 +425,38 @@ namespace MoviesAssessment
         }
 
 
-        public string ReturnMovie(string CustID, string MovieID, string ID) 
+        public string ReturnMovie(string CustID, string MovieID, string ID)
         {
             DateTime Today = DateTime.Now;
 
             //Runs if text is in the textboxes
             if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
-                {
-                   var myCommand = new SqlCommand("UPDATE RentedMovies set MovieIDFK = @MovieID, CustIDFK = @CustID, DateReturned = @Today WHERE RMID = @ID ", Connection);
+            {
+                var myCommand =
+                    new SqlCommand(
+                        "UPDATE RentedMovies set MovieIDFK = @MovieID, CustIDFK = @CustID, DateReturned = @Today WHERE RMID = @ID ",
+                        Connection);
 
-                    // var myCommand = new SqlCommand("UPDATE Customer set FirstName = @Firstname, LastName = @Lastname, Address = @address, Phone = @phone WHERE CustID = @ID ", Connection);
+                // var myCommand = new SqlCommand("UPDATE Customer set FirstName = @Firstname, LastName = @Lastname, Address = @address, Phone = @phone WHERE CustID = @ID ", Connection);
 
-                   //Parameters to prevent SQL injections
-                   myCommand.Parameters.AddWithValue("MovieID", MovieID);
-                   myCommand.Parameters.AddWithValue("CustID", CustID);
-                   myCommand.Parameters.AddWithValue("Today", Today);
-                   myCommand.Parameters.AddWithValue("ID", ID);
+                //Parameters to prevent SQL injections
+                myCommand.Parameters.AddWithValue("MovieID", MovieID);
+                myCommand.Parameters.AddWithValue("CustID", CustID);
+                myCommand.Parameters.AddWithValue("Today", Today);
+                myCommand.Parameters.AddWithValue("ID", ID);
 
-                   //Opens a connection to add in SQL
-                   Connection.Open();
-                   myCommand.ExecuteNonQuery();
-                   Connection.Close();
+                //Opens a connection to add in SQL
+                Connection.Open();
+                myCommand.ExecuteNonQuery();
+                Connection.Close();
 
-                   return "successfully returned";
-                }
-             else
-                {
-                  Connection.Close();
-                  return "Failed to return";
-                }
+                return "successfully returned";
+            }
+            else
+            {
+                Connection.Close();
+                return "Failed to return";
+            }
         }
 
         public string Cost(string MovieYear)
@@ -439,7 +474,7 @@ namespace MoviesAssessment
             }
         }
 
-        //================_Unit_Test_==================
+        //================_Unit_Test_Mothod==================
 
 
         public bool ConnectionTestFillDGVMovies()
@@ -449,7 +484,9 @@ namespace MoviesAssessment
 
             try
             {
-                using (DataAD = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
+                using (
+                    DataAD =
+                        new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
                 {
                     //Open a connection to the DB
                     Connection.Open();
@@ -465,11 +502,9 @@ namespace MoviesAssessment
             catch (Exception)
             {
 
-               return false;
+                return false;
             }
         }
     }
-
-
 }
 
