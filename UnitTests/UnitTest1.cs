@@ -20,7 +20,7 @@ namespace UnitTests
         [TestMethod]
         public void MovieCost5Dollars()
         {
-            //Testing that then movie cost if issuing a movie under 5 years old equals $5.00
+            //Testing that issuing a movie under 5 years old equals $5.00
             Database myDatabase = new Database();
 
             string Expected = "$5.00";
@@ -32,7 +32,7 @@ namespace UnitTests
         [TestMethod]
         public void MovieCost2Dollars()
         {
-            //Testing that the movie cost if issuing a movie over 5 years old equals $2.00
+            //Testing that issuing a movie over 5 years old equals $2.00
             Database myDatabase = new Database();
 
             string Expected = "$2.00";

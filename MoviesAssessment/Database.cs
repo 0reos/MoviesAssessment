@@ -73,9 +73,7 @@ namespace MoviesAssessment
         {
             DataTable MCMovieRented = new DataTable();
             using (
-                DataAD =
-                    new SqlDataAdapter(
-                        "SELECT [Times Issued], Title, Year FROM MostCommonMovieRented ORDER BY [Times Issued] DESC",
+                DataAD = new SqlDataAdapter("SELECT [Times Issued], Title, Year FROM MostCommonMovieRented ORDER BY [Times Issued] DESC",
                         Connection))
 
             {
@@ -95,10 +93,7 @@ namespace MoviesAssessment
         {
             DataTable MCVidRentedbyCust = new DataTable();
 
-            using (
-                DataAD =
-                    new SqlDataAdapter(
-                        "SELECT [Hired Movies], FirstName, LastName FROM MostMoviesRentedByCustomer ORDER BY [Hired Movies] DESC",
+            using (DataAD = new SqlDataAdapter("SELECT [Hired Movies], FirstName, LastName FROM MostMoviesRentedByCustomer ORDER BY [Hired Movies] DESC",
                         Connection))
             {
                 //Open a connection to the DB
@@ -135,18 +130,14 @@ namespace MoviesAssessment
             return dtMovies;
         }
 
-        public string InsertOrUpdateMovie(string Title, string Year, string Rating, string Genre, string Plot, string ID,
-            string AddOrUpdate)
+        public string InsertOrUpdateMovie(string Title, string Year, string Rating, string Genre, string Plot, string ID, string AddOrUpdate)
         {
             try
             {
                 if (AddOrUpdate == "Add")
                 {
                     //Creates a Command object, a Query and opens a connection to SQL Server
-                    var myCommand =
-                        new SqlCommand(
-                            "INSERT INTO Movies (Title, Year, Rating, Genre, Plot)" +
-                            "VALUES(@Title, @Year, @Rating, @Genre, @Plot, )", Connection);
+                    var myCommand = new SqlCommand("INSERT INTO Movies (Title, Year, Rating, Genre, Plot)" + "VALUES(@Title, @Year, @Rating, @Genre, @Plot, )", Connection);
 
                     //Parameters preventing SQL injections
                     myCommand.Parameters.AddWithValue("Title", Title);
@@ -163,9 +154,7 @@ namespace MoviesAssessment
                 }
                 else if (AddOrUpdate == "Update")
                 {
-                    var myCommand =
-                        new SqlCommand(
-                            "UPDATE Movies set Title = @Title, Year = @Year, Rating = @Rating, Genre = @Genre, Plot = @Plot  WHERE MovieID = @ID ",
+                    var myCommand = new SqlCommand("UPDATE Movies set Title = @Title, Year = @Year, Rating = @Rating, Genre = @Genre, Plot = @Plot  WHERE MovieID = @ID ",
                             Connection);
 
                     //Parameters preventing SQL injections
@@ -232,9 +221,7 @@ namespace MoviesAssessment
             //Create a datatable --> Customers
             DataTable dtCustomers = new DataTable();
 
-            using (
-                DataAD =
-                    new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone From Customer", Connection))
+            using (DataAD = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone From Customer", Connection))
             {
                 //Open a connection to the DB
                 Connection.Open();
@@ -332,8 +319,7 @@ namespace MoviesAssessment
                 return "Failed to be deleted";
             }
         }
-
-
+        
 
         //=======================_Rented_Movies_Related_==========================
 
@@ -343,10 +329,7 @@ namespace MoviesAssessment
             //Create a datatable --> RentedMovies
             DataTable dtRentedMovies = new DataTable();
 
-            using (
-                DataAD =
-                    new SqlDataAdapter(
-                        "SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum",
+            using (DataAD = new SqlDataAdapter("SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum",
                         Connection))
             {
                 //Open a connection to the DB
@@ -395,7 +378,7 @@ namespace MoviesAssessment
 
         public string IssueMovie(string CustID, string MovieID)
         {
-            //Runs if text is in the textboxes
+            //Runs only if text is in the textboxes
             if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
             {
                 var myCommand =
@@ -429,15 +412,12 @@ namespace MoviesAssessment
         {
             DateTime Today = DateTime.Now;
 
-            //Runs if text is in the textboxes
+            //Runs only if text is in the textboxes
             if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
             {
                 var myCommand =
-                    new SqlCommand(
-                        "UPDATE RentedMovies set MovieIDFK = @MovieID, CustIDFK = @CustID, DateReturned = @Today WHERE RMID = @ID ",
+                    new SqlCommand("UPDATE RentedMovies set MovieIDFK = @MovieID, CustIDFK = @CustID, DateReturned = @Today WHERE RMID = @ID ",
                         Connection);
-
-                // var myCommand = new SqlCommand("UPDATE Customer set FirstName = @Firstname, LastName = @Lastname, Address = @address, Phone = @phone WHERE CustID = @ID ", Connection);
 
                 //Parameters to prevent SQL injections
                 myCommand.Parameters.AddWithValue("MovieID", MovieID);
@@ -461,6 +441,7 @@ namespace MoviesAssessment
 
         public string Cost(string MovieYear)
         {
+            //Sorting the cost for the movie being issued
             int YearNow = (Convert.ToInt32(DateTime.Now.Year));
             int YearsOld = (YearNow - (Convert.ToInt32(MovieYear)));
 
@@ -484,9 +465,7 @@ namespace MoviesAssessment
 
             try
             {
-                using (
-                    DataAD =
-                        new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
+                using (DataAD = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies", Connection))
                 {
                     //Open a connection to the DB
                     Connection.Open();

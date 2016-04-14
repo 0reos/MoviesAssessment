@@ -78,7 +78,6 @@ namespace MoviesAssessment
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
 
 
