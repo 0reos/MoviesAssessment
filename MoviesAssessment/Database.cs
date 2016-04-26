@@ -137,7 +137,7 @@ namespace MoviesAssessment
                 if (AddOrUpdate == "Add")
                 {
                     //Creates a Command object, a Query and opens a connection to SQL Server
-                    var myCommand = new SqlCommand("INSERT INTO Movies (Title, Year, Rating, Genre, Plot)" + "VALUES(@Title, @Year, @Rating, @Genre, @Plot, )", Connection);
+                    var myCommand = new SqlCommand("INSERT INTO Movies (Title, Year, Rating, Genre, Plot)" + "VALUES(@Title, @Year, @Rating, @Genre, @Plot)", Connection);
 
                     //Parameters preventing SQL injections
                     myCommand.Parameters.AddWithValue("Title", Title);
@@ -145,6 +145,7 @@ namespace MoviesAssessment
                     myCommand.Parameters.AddWithValue("Rating", Rating);
                     myCommand.Parameters.AddWithValue("Genre", Genre);
                     myCommand.Parameters.AddWithValue("Plot", Plot);
+                    
 
 
                     //Opens connection to add in SQL and closes
