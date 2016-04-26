@@ -456,7 +456,7 @@ namespace MoviesAssessment
             }
         }
 
-        //================_Unit_Test_Mothod==================
+        //================_Unit_Test_Method==================
 
 
         public bool ConnectionTestFillDGVMovies()
@@ -485,6 +485,16 @@ namespace MoviesAssessment
                 return false;
             }
         }
+
+       //====================================================
+
+        //public string Search()
+        //{
+            
+
+
+        //}
+        
     }
 }
 
