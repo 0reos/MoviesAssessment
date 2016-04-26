@@ -190,9 +190,8 @@ namespace MoviesAssessment
                 var myCommand = new SqlCommand();
                 switch (Table)
                 {
-                    case "Movie":
-                        myCommand = new SqlCommand("DELETE FROM Movies WHERE MovieID = @ID");
-                        break;
+                    case "Movie": myCommand = new SqlCommand("DELETE FROM Movies WHERE MovieID = @ID");
+                    break;
                 }
 
                 //Parameters to prevent SQL injections
@@ -486,15 +485,37 @@ namespace MoviesAssessment
             }
         }
 
-       //====================================================
+        //====================================================
 
         //public string Search()
         //{
-            
+        //    TextBox myTextBoxS = new TextBox();
+        //    DataGridView DGVCust = new DataGridView();
 
+        //    SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True");
+            
+        //    string str = "SELECT * Customer WHERE (FirstName like '%' + @search + '%')";
+
+        //    SqlCommand myCommand = new SqlCommand(str, con);
+
+        //    myCommand.Parameters.Add("@search", SqlDbType.NVarChar).Value = myTextBoxS.Text;
+
+        //    con.Open();
+        //    myCommand.ExecuteNonQuery();
+        //    SqlDataAdapter da = new SqlDataAdapter();
+
+        //    da.SelectCommand = myCommand;
+        //    DataSet ds = new DataSet();
+
+        //    da.Fill(ds, "FirstName");
+        //    DGVCust.DataSource = ds;
+        //   // DGVCust.DataBind();
+        //    con.Close();
+
+        //    return Result.ToString();
 
         //}
-        
+
     }
 }
 

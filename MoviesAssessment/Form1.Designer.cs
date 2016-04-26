@@ -78,7 +78,8 @@
             this.lblTotalCost = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtbSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.cbSearch = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.tabPageMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).BeginInit();
@@ -124,10 +125,10 @@
             // tabPageCustomers
             // 
             this.tabPageCustomers.Controls.Add(this.DGVCustomers);
-            this.tabPageCustomers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCustomers.Location = new System.Drawing.Point(4, 24);
             this.tabPageCustomers.Name = "tabPageCustomers";
             this.tabPageCustomers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCustomers.Size = new System.Drawing.Size(729, 302);
+            this.tabPageCustomers.Size = new System.Drawing.Size(729, 300);
             this.tabPageCustomers.TabIndex = 1;
             this.tabPageCustomers.Text = "Customers";
             this.tabPageCustomers.UseVisualStyleBackColor = true;
@@ -144,10 +145,10 @@
             // tabPageRentedMovies
             // 
             this.tabPageRentedMovies.Controls.Add(this.DGVRentedMovies);
-            this.tabPageRentedMovies.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRentedMovies.Location = new System.Drawing.Point(4, 24);
             this.tabPageRentedMovies.Name = "tabPageRentedMovies";
             this.tabPageRentedMovies.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRentedMovies.Size = new System.Drawing.Size(729, 302);
+            this.tabPageRentedMovies.Size = new System.Drawing.Size(729, 300);
             this.tabPageRentedMovies.TabIndex = 2;
             this.tabPageRentedMovies.Text = "Rented Movies";
             this.tabPageRentedMovies.UseVisualStyleBackColor = true;
@@ -510,9 +511,12 @@
             // 
             this.CBOptions.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBOptions.FormattingEnabled = true;
+            this.CBOptions.Items.AddRange(new object[] {
+            "Most popular movies",
+            "Most movies rented (by Customer)"});
             this.CBOptions.Location = new System.Drawing.Point(776, 243);
             this.CBOptions.Name = "CBOptions";
-            this.CBOptions.Size = new System.Drawing.Size(158, 23);
+            this.CBOptions.Size = new System.Drawing.Size(212, 23);
             this.CBOptions.TabIndex = 38;
             // 
             // btnFind
@@ -568,7 +572,7 @@
             // 
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(13, 13);
+            this.lblSearch.Location = new System.Drawing.Point(15, 16);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(43, 15);
             this.lblSearch.TabIndex = 43;
@@ -576,29 +580,42 @@
             // 
             // txtbSearch
             // 
-            this.txtbSearch.Location = new System.Drawing.Point(12, 34);
+            this.txtbSearch.Location = new System.Drawing.Point(152, 34);
             this.txtbSearch.Name = "txtbSearch";
             this.txtbSearch.Size = new System.Drawing.Size(219, 21);
             this.txtbSearch.TabIndex = 44;
+            this.txtbSearch.TextChanged += new System.EventHandler(this.txtbSearch_TextChanged);
             // 
-            // btnSearch
+            // cbSearch
             // 
-            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(237, 33);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(62, 23);
-            this.btnSearch.TabIndex = 45;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.cbSearch.FormattingEnabled = true;
+            this.cbSearch.Items.AddRange(new object[] {
+            "Customers",
+            "Movies",
+            "Rented Movies"});
+            this.cbSearch.Location = new System.Drawing.Point(12, 34);
+            this.cbSearch.Name = "cbSearch";
+            this.cbSearch.Size = new System.Drawing.Size(134, 21);
+            this.cbSearch.TabIndex = 46;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(155, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 15);
+            this.label15.TabIndex = 43;
+            this.label15.Text = "Name/ Title";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 686);
-            this.Controls.Add(this.btnSearch);
+            this.ClientSize = new System.Drawing.Size(1022, 638);
+            this.Controls.Add(this.cbSearch);
             this.Controls.Add(this.txtbSearch);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.lblTotalCost);
             this.Controls.Add(this.label13);
@@ -707,7 +724,8 @@
         private System.Windows.Forms.Label lblTotalCost;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtbSearch;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cbSearch;
+        private System.Windows.Forms.Label label15;
     }
 }
 

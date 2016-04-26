@@ -22,18 +22,18 @@ namespace MoviesAssessment
             DisplayDataGridViewCustomers();
             DisplayDataGridViewRentedMovies();
             StartPosition = FormStartPosition.CenterScreen;
-            CBOptions.Items.Add("Most popular movies");
-            CBOptions.Items.Add("Most movies rented (by Customer)");
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             myDatabase.ClearAllTextBoxes(this);
+            myDatabase.ClearAllLables(this);
         }
         
 
-        //====================_Movie_Related_========================
-        
+        /// <summary>
+        ///=== Movie Related ===
+        /// </summary>
         
         private void DisplayDataGridViewMovies()
         {
@@ -194,10 +194,11 @@ namespace MoviesAssessment
                 }
             }
         }
-
-
-        //====================_Customer_Related_======================== 
-       
+        
+        
+        /// <summary>
+        /// === Customer_Related ===
+        /// </summary>
 
         private void DisplayDataGridViewCustomers()
         {
@@ -351,9 +352,10 @@ namespace MoviesAssessment
         } 
 
         
-        //=====================_Rented Movies_Related==================
+        /// <summary>
+        /// === Rented_Movies_Related ===
+        /// </summary>
         
-
         private void DGVRentedMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
              
@@ -552,13 +554,45 @@ namespace MoviesAssessment
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+      
+        private void txtbSearch_TextChanged(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True");
 
+            if (cbSearch.Text == "Customers")
+            {
+                TabControl.SelectedTab = tabPageCustomers;
 
+                SqlDataAdapter da = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone FROM Customer WHERE FirstName like '" + txtbSearch.Text + "%'" , con);
 
+                DataTable dt = new DataTable();
 
+                da.Fill(dt);
+                DGVCustomers.DataSource = dt;
+            }
+            else if (cbSearch.Text == "Movies")
+            {
+                TabControl.SelectedTab = tabPageMovies;
 
+                SqlDataAdapter da = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies WHERE Title like '" + txtbSearch.Text + "%'", con);
+
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+                DGVMovies.DataSource = dt;
+            }
+            else if (cbSearch.Text == "Rented Movies")
+            {
+                TabControl.SelectedTab = tabPageRentedMovies;
+
+                SqlDataAdapter da = new SqlDataAdapter("SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum WHERE FirstName like '" + txtbSearch.Text + "%'", con);
+
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+                DGVRentedMovies.DataSource = dt;
+            }
+            
         }
     }
 
