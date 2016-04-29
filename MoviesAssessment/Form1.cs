@@ -411,6 +411,8 @@ namespace MoviesAssessment
                 {
                     result = myDatabase.IssueMovie(lblCustID.Text, lblMovieID.Text);
                     MessageBox.Show("Movie successfully issued to customer");
+                    
+                    DGVRentedMovies.Rows[DGVRentedMovies.Rows.Count-1].DefaultCellStyle.BackColor = Color.Red;
                 }
                 catch (Exception ex)
                 {
@@ -418,7 +420,7 @@ namespace MoviesAssessment
                 }
 
                 //Updates DataGrideView to see new entries
-                DisplayDataGridViewRentedMovies();
+                //DisplayDataGridViewRentedMovies();
             }
             else
             {
@@ -488,8 +490,7 @@ namespace MoviesAssessment
 
                     //Refreshes everything
                     DisplayDataGridViewRentedMovies();
-
-
+                    
                     //Clears all textboxes after
                     myDatabase.ClearAllTextBoxes(this);
                     myDatabase.ClearAllLables(this);
@@ -501,8 +502,7 @@ namespace MoviesAssessment
             }
         }
 
-
-
+        
         //================================================================================
 
 
@@ -514,7 +514,7 @@ namespace MoviesAssessment
                DisplayDataGViewMCMovieRented();
             }
 
-            if (CBOptions.SelectedIndex == 1)
+           else if (CBOptions.SelectedIndex == 1)
             {
                 DisplayMCVideosRentedByCustomer();
             }
@@ -541,9 +541,11 @@ namespace MoviesAssessment
 
         private void DisplayMCVideosRentedByCustomer()
         {
+            //Clears out old data
             DGVResults.DataSource = null;
             try
             {
+                //Passes the datatable to the DataGridView
                 DGVResults.DataSource = myDatabase.FillMCVideosRentedByCustomer();
 
                 DGVResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -554,45 +556,93 @@ namespace MoviesAssessment
             }
         }
 
-      
+        private void ProcDisplayIssuedMovies()
+        {
+            //Clears out old data
+            DGVResults.DataSource = null;
+            try
+            {
+                //Passes the datatable to the DataGridView
+                int ID = Convert.ToInt32(txtCustIDMovieSearch.Text);
+                DGVResults.DataSource = myDatabase.ProcSearch(ID);
+
+                DGVResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void txtbSearch_TextChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True");
+            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True");
 
-            if (cbSearch.Text == "Customers")
+            //if (cbSearch.Text == "Customers")
+            //{
+            //    TabControl.SelectedTab = tabPageCustomers;
+
+            //    SqlDataAdapter da = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone FROM Customer WHERE FirstName like '" + txtbSearch.Text + "%'" , con);
+
+            //    DataTable dt = new DataTable();
+
+            //    da.Fill(dt);
+            //    DGVCustomers.DataSource = dt;
+            //}
+            //else if (cbSearch.Text == "Movies")
+            //{
+            //    TabControl.SelectedTab = tabPageMovies;
+
+            //    SqlDataAdapter da = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies WHERE Title like '" + txtbSearch.Text + "%'", con);
+
+            //    DataTable dt = new DataTable();
+
+            //    da.Fill(dt);
+            //    DGVMovies.DataSource = dt;
+            //}
+            //else if (cbSearch.Text == "Rented Movies")
+            //{
+            //    TabControl.SelectedTab = tabPageRentedMovies;
+
+            //    SqlDataAdapter da = new SqlDataAdapter("SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum WHERE FirstName like '" + txtbSearch.Text + "%'", con);
+
+            //    DataTable dt = new DataTable();
+
+            //    da.Fill(dt);
+            //    DGVRentedMovies.DataSource = dt;
+            //}
+
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+            //Searching the Databases if text is entered in the search box
+            if (txtbSearch.TextLength > 0)
             {
-                TabControl.SelectedTab = tabPageCustomers;
+                string text = cbSearch.SelectedItem.ToString();
+                string searchtext = txtbSearch.Text;
 
-                SqlDataAdapter da = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone FROM Customer WHERE FirstName like '" + txtbSearch.Text + "%'" , con);
+                 if (text == "Customers")
+                {   
+                    TabControl.SelectedTab = tabPageCustomers;
+                    DGVCustomers = myDatabase.Search(text,searchtext);
+                }
 
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-                DGVCustomers.DataSource = dt;
+             else if (text == "Movies")
+                {
+                    TabControl.SelectedTab = tabPageMovies;
+                    DGVMovies = myDatabase.Search(text,searchtext);
+                }
+             else if (text == "RentedMovies")
+                {
+                    TabControl.SelectedTab = tabPageRentedMovies;
+                    DGVRentedMovies = myDatabase.Search(text,searchtext);
+                }
             }
-            else if (cbSearch.Text == "Movies")
-            {
-                TabControl.SelectedTab = tabPageMovies;
+        }
 
-                SqlDataAdapter da = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies WHERE Title like '" + txtbSearch.Text + "%'", con);
-
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-                DGVMovies.DataSource = dt;
-            }
-            else if (cbSearch.Text == "Rented Movies")
-            {
-                TabControl.SelectedTab = tabPageRentedMovies;
-
-                SqlDataAdapter da = new SqlDataAdapter("SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum WHERE FirstName like '" + txtbSearch.Text + "%'", con);
-
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-                DGVRentedMovies.DataSource = dt;
-            }
-            
+        private void btnIssuedMovies_Click(object sender, EventArgs e)
+        {
+            ProcDisplayIssuedMovies();
         }
     }
 

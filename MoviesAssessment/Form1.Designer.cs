@@ -80,6 +80,9 @@
             this.txtbSearch = new System.Windows.Forms.TextBox();
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnCustomersMovies = new System.Windows.Forms.Button();
+            this.txtCustIDMovieSearch = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.tabPageMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).BeginInit();
@@ -99,7 +102,7 @@
             this.TabControl.Location = new System.Drawing.Point(12, 63);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(737, 328);
+            this.TabControl.Size = new System.Drawing.Size(739, 328);
             this.TabControl.TabIndex = 0;
             // 
             // tabPageMovies
@@ -108,17 +111,19 @@
             this.tabPageMovies.Location = new System.Drawing.Point(4, 24);
             this.tabPageMovies.Name = "tabPageMovies";
             this.tabPageMovies.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMovies.Size = new System.Drawing.Size(729, 300);
+            this.tabPageMovies.Size = new System.Drawing.Size(731, 300);
             this.tabPageMovies.TabIndex = 0;
             this.tabPageMovies.Text = "Movies";
             this.tabPageMovies.UseVisualStyleBackColor = true;
             // 
             // DGVMovies
             // 
+            this.DGVMovies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVMovies.Location = new System.Drawing.Point(0, 0);
             this.DGVMovies.Name = "DGVMovies";
-            this.DGVMovies.Size = new System.Drawing.Size(729, 302);
+            this.DGVMovies.ReadOnly = true;
+            this.DGVMovies.Size = new System.Drawing.Size(731, 300);
             this.DGVMovies.TabIndex = 0;
             this.DGVMovies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVMovies_CellContentClick);
             // 
@@ -128,17 +133,19 @@
             this.tabPageCustomers.Location = new System.Drawing.Point(4, 24);
             this.tabPageCustomers.Name = "tabPageCustomers";
             this.tabPageCustomers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCustomers.Size = new System.Drawing.Size(729, 300);
+            this.tabPageCustomers.Size = new System.Drawing.Size(731, 300);
             this.tabPageCustomers.TabIndex = 1;
             this.tabPageCustomers.Text = "Customers";
             this.tabPageCustomers.UseVisualStyleBackColor = true;
             // 
             // DGVCustomers
             // 
+            this.DGVCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCustomers.Location = new System.Drawing.Point(0, 0);
             this.DGVCustomers.Name = "DGVCustomers";
-            this.DGVCustomers.Size = new System.Drawing.Size(729, 302);
+            this.DGVCustomers.ReadOnly = true;
+            this.DGVCustomers.Size = new System.Drawing.Size(731, 300);
             this.DGVCustomers.TabIndex = 0;
             this.DGVCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCustomers_CellContentClick);
             // 
@@ -148,7 +155,7 @@
             this.tabPageRentedMovies.Location = new System.Drawing.Point(4, 24);
             this.tabPageRentedMovies.Name = "tabPageRentedMovies";
             this.tabPageRentedMovies.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRentedMovies.Size = new System.Drawing.Size(729, 300);
+            this.tabPageRentedMovies.Size = new System.Drawing.Size(731, 300);
             this.tabPageRentedMovies.TabIndex = 2;
             this.tabPageRentedMovies.Text = "Rented Movies";
             this.tabPageRentedMovies.UseVisualStyleBackColor = true;
@@ -158,13 +165,14 @@
             this.DGVRentedMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVRentedMovies.Location = new System.Drawing.Point(0, 0);
             this.DGVRentedMovies.Name = "DGVRentedMovies";
-            this.DGVRentedMovies.Size = new System.Drawing.Size(729, 302);
+            this.DGVRentedMovies.ReadOnly = true;
+            this.DGVRentedMovies.Size = new System.Drawing.Size(731, 300);
             this.DGVRentedMovies.TabIndex = 0;
             this.DGVRentedMovies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVRentedMovies_CellContentClick);
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAddCustomer.BackColor = System.Drawing.Color.SkyBlue;
             this.btnAddCustomer.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCustomer.Location = new System.Drawing.Point(12, 410);
             this.btnAddCustomer.Name = "btnAddCustomer";
@@ -177,7 +185,7 @@
             // 
             // btnDeleteMovie
             // 
-            this.btnDeleteMovie.BackColor = System.Drawing.Color.Tan;
+            this.btnDeleteMovie.BackColor = System.Drawing.Color.PeachPuff;
             this.btnDeleteMovie.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteMovie.Location = new System.Drawing.Point(23, 568);
             this.btnDeleteMovie.Name = "btnDeleteMovie";
@@ -190,7 +198,7 @@
             // 
             // btnUpdateMovie
             // 
-            this.btnUpdateMovie.BackColor = System.Drawing.Color.Tan;
+            this.btnUpdateMovie.BackColor = System.Drawing.Color.PeachPuff;
             this.btnUpdateMovie.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateMovie.Location = new System.Drawing.Point(23, 543);
             this.btnUpdateMovie.Name = "btnUpdateMovie";
@@ -202,7 +210,7 @@
             // 
             // btnUpdateCustomer
             // 
-            this.btnUpdateCustomer.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnUpdateCustomer.BackColor = System.Drawing.Color.SkyBlue;
             this.btnUpdateCustomer.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateCustomer.Location = new System.Drawing.Point(12, 435);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
@@ -214,7 +222,7 @@
             // 
             // btnDeleteCustomer
             // 
-            this.btnDeleteCustomer.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnDeleteCustomer.BackColor = System.Drawing.Color.SkyBlue;
             this.btnDeleteCustomer.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCustomer.Location = new System.Drawing.Point(12, 460);
             this.btnDeleteCustomer.Name = "btnDeleteCustomer";
@@ -300,7 +308,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(417, 504);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 15);
@@ -310,7 +320,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Teal;
             this.label2.Location = new System.Drawing.Point(167, 504);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 15);
@@ -320,7 +332,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Teal;
             this.label3.Location = new System.Drawing.Point(343, 504);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
@@ -330,7 +344,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Teal;
             this.label4.Location = new System.Drawing.Point(589, 504);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 15);
@@ -340,7 +356,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Teal;
             this.label5.Location = new System.Drawing.Point(483, 504);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 15);
@@ -350,7 +368,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Teal;
             this.label6.Location = new System.Drawing.Point(167, 396);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 15);
@@ -360,7 +380,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Teal;
             this.label7.Location = new System.Drawing.Point(288, 396);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 15);
@@ -370,7 +392,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Teal;
             this.label8.Location = new System.Drawing.Point(409, 396);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 15);
@@ -380,7 +404,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Teal;
             this.label9.Location = new System.Drawing.Point(530, 396);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 15);
@@ -390,7 +416,9 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Teal;
             this.label10.Location = new System.Drawing.Point(118, 504);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(52, 15);
@@ -400,7 +428,9 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Teal;
             this.label11.Location = new System.Drawing.Point(118, 396);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(42, 15);
@@ -409,7 +439,7 @@
             // 
             // btnAddMovie
             // 
-            this.btnAddMovie.BackColor = System.Drawing.Color.Tan;
+            this.btnAddMovie.BackColor = System.Drawing.Color.PeachPuff;
             this.btnAddMovie.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMovie.Location = new System.Drawing.Point(23, 517);
             this.btnAddMovie.Name = "btnAddMovie";
@@ -421,31 +451,33 @@
             // 
             // btnIssueMovie
             // 
+            this.btnIssueMovie.BackColor = System.Drawing.Color.MediumVioletRed;
             this.btnIssueMovie.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIssueMovie.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.btnIssueMovie.Location = new System.Drawing.Point(790, 556);
+            this.btnIssueMovie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnIssueMovie.Location = new System.Drawing.Point(798, 483);
             this.btnIssueMovie.Name = "btnIssueMovie";
             this.btnIssueMovie.Size = new System.Drawing.Size(103, 60);
             this.btnIssueMovie.TabIndex = 29;
             this.btnIssueMovie.Text = "Issue Movie";
-            this.btnIssueMovie.UseVisualStyleBackColor = true;
+            this.btnIssueMovie.UseVisualStyleBackColor = false;
             this.btnIssueMovie.Click += new System.EventHandler(this.btnIssueMovie_Click);
             // 
             // btnReturnMovie
             // 
+            this.btnReturnMovie.BackColor = System.Drawing.Color.Green;
             this.btnReturnMovie.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturnMovie.ForeColor = System.Drawing.Color.Green;
-            this.btnReturnMovie.Location = new System.Drawing.Point(899, 556);
+            this.btnReturnMovie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnReturnMovie.Location = new System.Drawing.Point(907, 483);
             this.btnReturnMovie.Name = "btnReturnMovie";
             this.btnReturnMovie.Size = new System.Drawing.Size(103, 60);
             this.btnReturnMovie.TabIndex = 30;
             this.btnReturnMovie.Text = "Return Movie";
-            this.btnReturnMovie.UseVisualStyleBackColor = true;
+            this.btnReturnMovie.UseVisualStyleBackColor = false;
             this.btnReturnMovie.Click += new System.EventHandler(this.btnReturnMovie_Click);
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.IndianRed;
+            this.btnClear.BackColor = System.Drawing.Color.LightCoral;
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Location = new System.Drawing.Point(16, 488);
             this.btnClear.Name = "btnClear";
@@ -458,8 +490,10 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(775, 333);
+            this.label12.ForeColor = System.Drawing.Color.Teal;
+            this.label12.Location = new System.Drawing.Point(119, 609);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(92, 15);
             this.label12.TabIndex = 33;
@@ -467,11 +501,11 @@
             // 
             // btnDeleteRMRecord
             // 
-            this.btnDeleteRMRecord.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteRMRecord.BackColor = System.Drawing.Color.MediumPurple;
             this.btnDeleteRMRecord.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteRMRecord.Location = new System.Drawing.Point(777, 366);
+            this.btnDeleteRMRecord.Location = new System.Drawing.Point(23, 606);
             this.btnDeleteRMRecord.Name = "btnDeleteRMRecord";
-            this.btnDeleteRMRecord.Size = new System.Drawing.Size(157, 23);
+            this.btnDeleteRMRecord.Size = new System.Drawing.Size(86, 54);
             this.btnDeleteRMRecord.TabIndex = 34;
             this.btnDeleteRMRecord.Text = "Delete Rented Movie Record";
             this.btnDeleteRMRecord.UseVisualStyleBackColor = false;
@@ -480,7 +514,7 @@
             // lblCustID
             // 
             this.lblCustID.AutoSize = true;
-            this.lblCustID.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lblCustID.BackColor = System.Drawing.Color.SkyBlue;
             this.lblCustID.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustID.Location = new System.Drawing.Point(119, 417);
             this.lblCustID.Name = "lblCustID";
@@ -490,7 +524,7 @@
             // lblMovieID
             // 
             this.lblMovieID.AutoSize = true;
-            this.lblMovieID.BackColor = System.Drawing.Color.Tan;
+            this.lblMovieID.BackColor = System.Drawing.Color.PeachPuff;
             this.lblMovieID.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMovieID.Location = new System.Drawing.Point(118, 525);
             this.lblMovieID.Name = "lblMovieID";
@@ -500,9 +534,9 @@
             // lblRentedMovieID
             // 
             this.lblRentedMovieID.AutoSize = true;
-            this.lblRentedMovieID.BackColor = System.Drawing.Color.RosyBrown;
+            this.lblRentedMovieID.BackColor = System.Drawing.Color.MediumPurple;
             this.lblRentedMovieID.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRentedMovieID.Location = new System.Drawing.Point(777, 350);
+            this.lblRentedMovieID.Location = new System.Drawing.Point(121, 626);
             this.lblRentedMovieID.Name = "lblRentedMovieID";
             this.lblRentedMovieID.Size = new System.Drawing.Size(0, 15);
             this.lblRentedMovieID.TabIndex = 37;
@@ -514,7 +548,7 @@
             this.CBOptions.Items.AddRange(new object[] {
             "Most popular movies",
             "Most movies rented (by Customer)"});
-            this.CBOptions.Location = new System.Drawing.Point(776, 243);
+            this.CBOptions.Location = new System.Drawing.Point(784, 243);
             this.CBOptions.Name = "CBOptions";
             this.CBOptions.Size = new System.Drawing.Size(212, 23);
             this.CBOptions.TabIndex = 38;
@@ -522,7 +556,7 @@
             // btnFind
             // 
             this.btnFind.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(776, 270);
+            this.btnFind.Location = new System.Drawing.Point(784, 270);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(53, 23);
             this.btnFind.TabIndex = 39;
@@ -541,7 +575,7 @@
             this.DGVResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGVResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVResults.ColumnHeadersVisible = false;
-            this.DGVResults.Location = new System.Drawing.Point(776, 87);
+            this.DGVResults.Location = new System.Drawing.Point(784, 87);
             this.DGVResults.Name = "DGVResults";
             this.DGVResults.ReadOnly = true;
             this.DGVResults.RowHeadersVisible = false;
@@ -551,7 +585,9 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Teal;
             this.label13.Location = new System.Drawing.Point(165, 548);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 15);
@@ -561,7 +597,9 @@
             // lblTotalCost
             // 
             this.lblTotalCost.AutoSize = true;
+            this.lblTotalCost.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalCost.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCost.ForeColor = System.Drawing.Color.Teal;
             this.lblTotalCost.Location = new System.Drawing.Point(198, 548);
             this.lblTotalCost.Name = "lblTotalCost";
             this.lblTotalCost.Size = new System.Drawing.Size(39, 15);
@@ -571,7 +609,9 @@
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
+            this.lblSearch.BackColor = System.Drawing.Color.Transparent;
             this.lblSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.Color.Teal;
             this.lblSearch.Location = new System.Drawing.Point(15, 16);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(43, 15);
@@ -601,18 +641,54 @@
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Teal;
             this.label15.Location = new System.Drawing.Point(155, 16);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(73, 15);
             this.label15.TabIndex = 43;
             this.label15.Text = "Name/ Title";
             // 
+            // btnCustomersMovies
+            // 
+            this.btnCustomersMovies.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomersMovies.Location = new System.Drawing.Point(851, 316);
+            this.btnCustomersMovies.Name = "btnCustomersMovies";
+            this.btnCustomersMovies.Size = new System.Drawing.Size(117, 23);
+            this.btnCustomersMovies.TabIndex = 47;
+            this.btnCustomersMovies.Text = "Customers Movies";
+            this.btnCustomersMovies.UseVisualStyleBackColor = true;
+            this.btnCustomersMovies.Click += new System.EventHandler(this.btnIssuedMovies_Click);
+            // 
+            // txtCustIDMovieSearch
+            // 
+            this.txtCustIDMovieSearch.Location = new System.Drawing.Point(784, 317);
+            this.txtCustIDMovieSearch.Name = "txtCustIDMovieSearch";
+            this.txtCustIDMovieSearch.Size = new System.Drawing.Size(61, 21);
+            this.txtCustIDMovieSearch.TabIndex = 48;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Teal;
+            this.label14.Location = new System.Drawing.Point(784, 298);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 15);
+            this.label14.TabIndex = 49;
+            this.label14.Text = "Search CustID";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 638);
+            this.BackgroundImage = global::MoviesAssessment.Resources.BG4;
+            this.ClientSize = new System.Drawing.Size(1022, 673);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtCustIDMovieSearch);
+            this.Controls.Add(this.btnCustomersMovies);
             this.Controls.Add(this.cbSearch);
             this.Controls.Add(this.txtbSearch);
             this.Controls.Add(this.label15);
@@ -726,6 +802,9 @@
         private System.Windows.Forms.TextBox txtbSearch;
         private System.Windows.Forms.ComboBox cbSearch;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnCustomersMovies;
+        private System.Windows.Forms.TextBox txtCustIDMovieSearch;
+        private System.Windows.Forms.Label label14;
     }
 }
 

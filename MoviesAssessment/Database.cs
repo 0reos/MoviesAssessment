@@ -243,9 +243,7 @@ namespace MoviesAssessment
                 {
                     //Creates a Command object, a Query and opens a connection to SQL Server
                     var myCommand =
-                        new SqlCommand(
-                            "INSERT INTO Customer (FirstName, LastName, Address, Phone)" +
-                            "VALUES(@Firstname, @Lastname, @Address, @Phone)", Connection);
+                        new SqlCommand("INSERT INTO Customer (FirstName, LastName, Address, Phone)" + "VALUES(@Firstname, @Lastname, @Address, @Phone)", Connection);
 
                     //Parameters preventing SQL injections
                     myCommand.Parameters.AddWithValue("Firstname", Firstname);
@@ -382,9 +380,7 @@ namespace MoviesAssessment
             if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
             {
                 var myCommand =
-                    new SqlCommand(
-                        "INSERT INTO RentedMovies (CustIDFK, MovieIDFK, DateRented)" +
-                        "VALUES(@CustID, @MovieID, @Today)", Connection);
+                    new SqlCommand("INSERT INTO RentedMovies (CustIDFK, MovieIDFK, DateRented)" + "VALUES(@CustID, @MovieID, @Today)", Connection);
 
                 DateTime Today = DateTime.Now;
 
@@ -480,41 +476,121 @@ namespace MoviesAssessment
             }
             catch (Exception)
             {
-
                 return false;
             }
         }
 
-        //====================================================
+        
+        public DataGridView Search(string text, string searchtext)
+       {
+           // SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True");
 
-        //public string Search()
-        //{
-        //    TextBox myTextBoxS = new TextBox();
-        //    DataGridView DGVCust = new DataGridView();
-
-        //    SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True");
+            DataGridView DGVCustomers = new DataGridView();
+            DataGridView DGVMovies = new DataGridView();
+            DataGridView DGVRentedMovies = new DataGridView();
+           
             
-        //    string str = "SELECT * Customer WHERE (FirstName like '%' + @search + '%')";
+            if (text == "Customers")
+            {
+                 SqlDataAdapter da = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone FROM Customer WHERE (FirstName like '" + searchtext + "%')", Connection);
 
-        //    SqlCommand myCommand = new SqlCommand(str, con);
+               // DataView DVCustomers = new DataView();
+                //DVCustomers.RowFilter = string.Format("FirstName like '%{0}%'", searchtext);
 
-        //    myCommand.Parameters.Add("@search", SqlDbType.NVarChar).Value = myTextBoxS.Text;
+                DataTable dt = new DataTable();
 
-        //    con.Open();
-        //    myCommand.ExecuteNonQuery();
-        //    SqlDataAdapter da = new SqlDataAdapter();
+               // DGVCustomers.DataSource = null;
 
-        //    da.SelectCommand = myCommand;
-        //    DataSet ds = new DataSet();
+                da.Fill(dt);
+                DGVCustomers.DataSource = dt;
+                return DGVCustomers;
+            }
+            else if (text == "Movies")
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies WHERE (Title like '" + searchtext + "%')", Connection); 
 
-        //    da.Fill(ds, "FirstName");
-        //    DGVCust.DataSource = ds;
-        //   // DGVCust.DataBind();
-        //    con.Close();
+                DataTable dt = new DataTable();
 
-        //    return Result.ToString();
+                DGVMovies.DataSource = null;
 
-        //}
+                da.Fill(dt);
+                DGVMovies.DataSource = dt;
+                return DGVMovies;
+            }
+            else if (text == "RentedMovies")
+            {
+                SqlDataAdapter da =
+                    new SqlDataAdapter(
+                        "SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum WHERE (FirstName LIKE '" + searchtext + "%')", Connection); 
+
+                DataTable dt = new DataTable();
+
+                DGVRentedMovies.DataSource = null;
+
+                da.Fill(dt);
+                DGVRentedMovies.DataSource = dt;
+                return DGVRentedMovies;
+            }
+            return null;
+        }
+
+        public void IssuedMovies()
+        {
+            TextBox txtReturnedMovies = new TextBox();
+            
+            using (Command = Connection.CreateCommand())
+
+              Command.CommandText = "GetRentedMovies";
+              Command.CommandType = CommandType.StoredProcedure;
+              Command.Parameters.AddWithValue("@Cust", txtReturnedMovies.Text);
+
+              Connection.Open();
+              SqlDataReader reader = Command.ExecuteReader();
+            //  while (reader.Read())
+            //  {
+                  
+            //  }
+            //reader.Close();
+            Connection.Close();
+           
+        }
+
+        public DataTable ProcSearch(int datestring)
+        {
+            DataTable movieRented = new DataTable();
+            
+            try
+            {
+                //Open a connection to the DB
+           
+                Command.CommandText = "GetRentedMovies";
+                Command.Parameters.AddWithValue("@Cust", datestring) ;
+               
+                Command.CommandType = CommandType.StoredProcedure;
+                //Command.Parameters.AddWithValue("@DateReturned", MovieSearch);
+                    Connection.Open();
+                 DataAD = new SqlDataAdapter(Command.CommandText, Connection);
+
+                //Makes the call
+               // Command.ExecuteReader();
+
+                //Fill the datatable from the SQL Proc
+                DataAD.Fill(movieRented);
+                //Close the connection
+                Connection.Close();
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                Connection.Close();
+            }
+
+            
+            //Passes the datatable to the DataGridView
+            return movieRented;
+        }
+
 
     }
 }
