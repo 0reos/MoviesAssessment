@@ -37,6 +37,7 @@ namespace MoviesAssessment
 
         public void ClearAllTextBoxes(Control root)
         {
+            //Clearing all textboxes on form
             foreach (Control ctrl in root.Controls)
             {
                 if (ctrl is TextBox)
@@ -49,6 +50,7 @@ namespace MoviesAssessment
 
         public void ClearAllLables(Control root)
         {
+            
             List<string> LabelNamesAreCleared = new List<string>();
 
             LabelNamesAreCleared.Add("lblMovieID");
@@ -56,6 +58,7 @@ namespace MoviesAssessment
             LabelNamesAreCleared.Add("lblRentedMovieID");
             LabelNamesAreCleared.Add("lblTotalCost");
 
+            //Clearing all lables on form
             foreach (Control ctrl in root.Controls)
             {
                 if (ctrl is Label)
@@ -412,7 +415,7 @@ namespace MoviesAssessment
             if (!object.ReferenceEquals(CustID, string.Empty) && (!object.ReferenceEquals(MovieID, string.Empty)))
             {
                 var myCommand =
-                    new SqlCommand("UPDATE RentedMovies set MovieIDFK = @MovieID, CustIDFK = @CustID, DateReturned = @Today WHERE RMID = @ID ",
+                    new SqlCommand("UPDATE RentedMovies set MovieIDFK = @MovieID, CustIDFK = @CustID, DateReturned = @Today WHERE RMID = @ID",
                         Connection);
 
                 //Parameters to prevent SQL injections
@@ -557,6 +560,8 @@ namespace MoviesAssessment
 
         public DataTable ProcSearch(int datestring)
         {
+            //This stored procedure only works with the number entered in the SQL Stored Procedure creation instead of the one being entered in the text box. Couldn't figure out why it was doing that.
+
             DataTable movieRented = new DataTable();
             
             try
@@ -585,7 +590,6 @@ namespace MoviesAssessment
                 MessageBox.Show(e.Message);
                 Connection.Close();
             }
-
             
             //Passes the datatable to the DataGridView
             return movieRented;

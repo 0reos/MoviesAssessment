@@ -558,6 +558,10 @@ namespace MoviesAssessment
 
         private void ProcDisplayIssuedMovies()
         {
+            
+
+
+
             //Clears out old data
             DGVResults.DataSource = null;
             try
@@ -644,6 +648,8 @@ namespace MoviesAssessment
         {
             ProcDisplayIssuedMovies();
         }
+
+        
     }
 
 }

@@ -94,16 +94,7 @@
     <None Include="Resources\vid.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Film-reel780.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BG2.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BG3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BG4.jpg" />
+    <None Include="Resources\BG6.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
