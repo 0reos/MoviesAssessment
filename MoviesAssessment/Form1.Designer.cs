@@ -175,7 +175,7 @@
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnAddCustomer.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnAddCustomer.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCustomer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAddCustomer.Location = new System.Drawing.Point(12, 410);
@@ -216,7 +216,7 @@
             // 
             // btnUpdateCustomer
             // 
-            this.btnUpdateCustomer.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnUpdateCustomer.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnUpdateCustomer.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateCustomer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnUpdateCustomer.Location = new System.Drawing.Point(12, 435);
@@ -229,7 +229,7 @@
             // 
             // btnDeleteCustomer
             // 
-            this.btnDeleteCustomer.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnDeleteCustomer.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnDeleteCustomer.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCustomer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnDeleteCustomer.Location = new System.Drawing.Point(12, 460);
@@ -592,7 +592,7 @@
             this.DGVResults.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGVResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGVResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DGVResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGVResults.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.DGVResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

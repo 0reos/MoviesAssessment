@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
+
 namespace MoviesAssessment
 {
     public class Database
@@ -495,22 +496,21 @@ namespace MoviesAssessment
             
             if (text == "Customers")
             {
-                 SqlDataAdapter da = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone FROM Customer WHERE (FirstName like '" + searchtext + "%')", Connection);
+                 SqlDataAdapter da = new SqlDataAdapter("SELECT CustID, FirstName, LastName, Address, Phone FROM Customer WHERE (FirstName like '" + (searchtext) + "%')", Connection);
 
                // DataView DVCustomers = new DataView();
                 //DVCustomers.RowFilter = string.Format("FirstName like '%{0}%'", searchtext);
 
                 DataTable dt = new DataTable();
 
-               // DGVCustomers.DataSource = null;
-
+               
                 da.Fill(dt);
                 DGVCustomers.DataSource = dt;
                 return DGVCustomers;
             }
             else if (text == "Movies")
             {
-                SqlDataAdapter da = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies WHERE (Title like '" + searchtext + "%')", Connection); 
+                SqlDataAdapter da = new SqlDataAdapter("SELECT MovieID, Title, Year, Rating, Genre, Plot FROM Movies WHERE (Title like '" + (searchtext) + "%')", Connection); 
 
                 DataTable dt = new DataTable();
 
@@ -524,7 +524,7 @@ namespace MoviesAssessment
             {
                 SqlDataAdapter da =
                     new SqlDataAdapter(
-                        "SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum WHERE (FirstName LIKE '" + searchtext + "%')", Connection); 
+                        "SELECT FirstName, LastName, Phone, Title, DateRented, DateReturned, RMID, CustID, MovieID FROM CustomerAndMoviesRentedPhoneNum WHERE (FirstName LIKE '" + (searchtext) + "%')", Connection); 
 
                 DataTable dt = new DataTable();
 

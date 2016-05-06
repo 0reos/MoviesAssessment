@@ -409,10 +409,13 @@ namespace MoviesAssessment
             {
                 try
                 {
+                    //Supposed to change the colour of Issued movies but isn't working
+                    DGVRentedMovies.Rows[DGVRentedMovies.Rows.Count-1].DefaultCellStyle.BackColor = Color.Red;
+
                     result = myDatabase.IssueMovie(lblCustID.Text, lblMovieID.Text);
                     MessageBox.Show("Movie successfully issued to customer");
                     
-                    DGVRentedMovies.Rows[DGVRentedMovies.Rows.Count-1].DefaultCellStyle.BackColor = Color.Red;
+                    
                 }
                 catch (Exception ex)
                 {
@@ -441,6 +444,9 @@ namespace MoviesAssessment
             {
                 try
                 {
+                    //Supposed to change the colour of Issued movies but isn't working
+                    DGVRentedMovies.Rows[DGVRentedMovies.Rows.Count-1].DefaultCellStyle.BackColor = Color.Green;
+
                     result = myDatabase.ReturnMovie(lblMovieID.Text, lblCustID.Text, lblRentedMovieID.Text);
                     MessageBox.Show("Movie successfully returned");
                 }
