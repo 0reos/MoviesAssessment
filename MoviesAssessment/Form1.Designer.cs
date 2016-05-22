@@ -189,7 +189,7 @@
             // 
             // btnDeleteMovie
             // 
-            this.btnDeleteMovie.BackColor = System.Drawing.Color.PeachPuff;
+            this.btnDeleteMovie.BackColor = System.Drawing.Color.Peru;
             this.btnDeleteMovie.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteMovie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnDeleteMovie.Location = new System.Drawing.Point(23, 568);
@@ -203,7 +203,7 @@
             // 
             // btnUpdateMovie
             // 
-            this.btnUpdateMovie.BackColor = System.Drawing.Color.PeachPuff;
+            this.btnUpdateMovie.BackColor = System.Drawing.Color.Peru;
             this.btnUpdateMovie.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateMovie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnUpdateMovie.Location = new System.Drawing.Point(23, 543);
@@ -456,7 +456,7 @@
             // 
             // btnAddMovie
             // 
-            this.btnAddMovie.BackColor = System.Drawing.Color.PeachPuff;
+            this.btnAddMovie.BackColor = System.Drawing.Color.Peru;
             this.btnAddMovie.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMovie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAddMovie.Location = new System.Drawing.Point(23, 517);
@@ -495,7 +495,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.LightCoral;
+            this.btnClear.BackColor = System.Drawing.Color.Tomato;
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnClear.Location = new System.Drawing.Point(16, 488);

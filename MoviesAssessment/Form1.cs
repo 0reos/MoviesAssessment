@@ -32,7 +32,7 @@ namespace MoviesAssessment
         
 
         /// <summary>
-        ///=== Movie Related ===
+        ///=== Movie_Related ===
         /// </summary>
         
         private void DisplayDataGridViewMovies()
@@ -195,7 +195,6 @@ namespace MoviesAssessment
             }
         }
         
-        
         /// <summary>
         /// === Customer_Related ===
         /// </summary>
@@ -351,7 +350,6 @@ namespace MoviesAssessment
             }
         } 
 
-        
         /// <summary>
         /// === Rented_Movies_Related ===
         /// </summary>
@@ -423,7 +421,7 @@ namespace MoviesAssessment
                 }
 
                 //Updates DataGrideView to see new entries
-                //DisplayDataGridViewRentedMovies();
+                DisplayDataGridViewRentedMovies();
             }
             else
             {
@@ -586,6 +584,8 @@ namespace MoviesAssessment
 
         private void txtbSearch_TextChanged(object sender, EventArgs e)
         {
+            //Working Search but not right for assessement specs
+
             //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-KIO7TVU\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True");
 
             //if (cbSearch.Text == "Customers")
@@ -622,7 +622,7 @@ namespace MoviesAssessment
             //    DGVRentedMovies.DataSource = dt;
             //}
 
-            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            //+++++++++++++++++++++++++++++++++++++++
 
 
             //Searching the Databases if text is entered in the search box

@@ -111,8 +111,12 @@ namespace MoviesAssessment
             return MCVidRentedbyCust;
         }
 
+        /// <summary>
+        /// == Movies_Related ==
+        /// </summary>
+        /// <returns></returns>
 
-        //=======================_Movies_Related_==========================
+        
 
         public DataTable FillDGVMoviesWithMovies()
         {
@@ -216,10 +220,11 @@ namespace MoviesAssessment
             }
         }
 
-
-        //=======================_Customer_Related_==========================
-
-
+        /// <summary>
+        /// == Customer_Related ==
+        /// </summary>
+        /// <returns></returns>
+        
         public DataTable FillDGVCustomersWithCustomers()
         {
             //Create a datatable --> Customers
@@ -322,10 +327,11 @@ namespace MoviesAssessment
             }
         }
         
-
-        //=======================_Rented_Movies_Related_==========================
-
-
+        /// <summary>
+        /// == Rented_Movies_Related ==
+        /// </summary>
+        /// <returns></returns>
+        
         public DataTable FillDGVRentedMoviesWithRentedMovies()
         {
             //Create a datatable --> RentedMovies
@@ -455,9 +461,11 @@ namespace MoviesAssessment
             }
         }
 
-        //================_Unit_Test_Method==================
-
-
+        /// <summary>
+        /// == Unit_Test_Method ==
+        /// </summary>
+        /// <returns></returns>
+        
         public bool ConnectionTestFillDGVMovies()
         {
             //Create a datatable --> Movies 
@@ -549,11 +557,7 @@ namespace MoviesAssessment
 
               Connection.Open();
               SqlDataReader reader = Command.ExecuteReader();
-            //  while (reader.Read())
-            //  {
-                  
-            //  }
-            //reader.Close();
+           
             Connection.Close();
            
         }
