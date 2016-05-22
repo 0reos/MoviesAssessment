@@ -115,9 +115,7 @@ namespace MoviesAssessment
         /// == Movies_Related ==
         /// </summary>
         /// <returns></returns>
-
         
-
         public DataTable FillDGVMoviesWithMovies()
         {
             //Create a datatable --> Movies 
